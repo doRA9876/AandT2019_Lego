@@ -1,25 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using LegoEnum;
 
-enum LandscapeType_OverView
-{
-  Building, Water, Nature, Road, Spaces,
-}
 
-enum LandscapeType_Details
-{                                                                                                           //LandscapeType_Overview
-  House, Shop, Skyscraper,                                                                    //Building
-  River_Straight, River_Curve, River_Intersection_T, Sea,                                         //Water
-  Forest, Park,                                                                                 //Nature
-  Road_Straight, Road_Curve, Road_Intersection_T, Road_Intersection_X, Road_Stop, Road_CrossWalk, Bridge,   //Road
-  Space                                                                                                     //Spaces
-}
-
-enum Direction
-{
-  North, South, East, West
-}
 
 enum Age
 {
@@ -33,7 +15,7 @@ class LandscapeLegoInfo
   public LandscapeType_Details detail;
   public int height;
   public Direction direction;
-  private Age age_;
+  private Age age;
 
   public LandscapeLegoInfo(LegoColor lc)
   {
@@ -42,7 +24,7 @@ class LandscapeLegoInfo
     north = south = east = west = LandscapeType_OverView.Spaces;
     direction = Direction.North;
     height = 0;
-    age_ = Age.Modern;
+    age = Age.Modern;
   }
 
   void SetLegoType_OverView(LegoColor legoColor)
@@ -105,7 +87,7 @@ class LandscapeLegoInfo
 
     GameObject GetBuildingObject()
     {
-      switch (this.age_)
+      switch (this.age)
       {
         case Age.Modern:
           switch (this.detail)
@@ -212,6 +194,7 @@ public class LegoCreateLandscape : MonoBehaviour
     legoCreateTex_ = gameObject.GetComponent<LegoCreateTex>();
     legoCreateTex_.CreateTexture(legoBlockMap);
     ConvertLegoBlockInfo2LandscapeInfo(legoBlockMap);
+    LegoRiverMap legoRiverMap = new LegoRiverMap(landscapeLegoMap_);
     UpdateLandscapeMap();
     CreateLandscape();
   }
@@ -240,6 +223,8 @@ public class LegoCreateLandscape : MonoBehaviour
       }
     }
   }
+
+  
 
   /// <summary>
   /// 景観作成

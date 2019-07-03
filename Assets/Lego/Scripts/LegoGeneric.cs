@@ -4,6 +4,7 @@ using System.Linq;
 using System.Collections;
 using System;
 using System.IO;
+using LegoEnum;
 
 public struct HSV
 {
