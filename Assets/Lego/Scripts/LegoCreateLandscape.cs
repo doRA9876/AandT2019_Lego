@@ -493,12 +493,12 @@ public class LegoCreateLandscape : MonoBehaviour
   
   void createRoadMap(int x, int y)//roadMap作成
   {
-        if (landscapeLegoMap_[x, y].overView != LandscapeType_OverView.Road)//RoadじゃないマスはSpaceで詰める
+        if (landscapeLegoMap_[x, y].overView != LandscapeType_OverView.Road || landscapeLegoMap_[x, y].detail == LandscapeType_Details.Space)//RoadじゃないマスはSpaceで詰める
         {
             roadMap[x, y].overView = LandscapeType_OverView.Spaces;
             roadMap[x, y].detail = LandscapeType_Details.Space;
         }
-        else if (landscapeLegoMap_[x, y].detail != LandscapeType_Details.Space)
+        else
             roadMap[x, y] = landscapeLegoMap_[x, y]; 
   }
 
