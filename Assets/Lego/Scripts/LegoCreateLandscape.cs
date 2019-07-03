@@ -160,9 +160,6 @@ class LandscapeLegoInfo
         case LandscapeType_Details.Sea:
           return LegoObjects.space;
 
-        case LandscapeType_Details.Fountain:
-          return LegoObjects.space;
-
         default:
           return LegoObjects.space;
       }
@@ -411,12 +408,6 @@ public class LegoCreateLandscape : MonoBehaviour
 
     if (Count == 0)//東西南北のNatureの数で種類を判定
       return LandscapeType_Details.Park;
-    else if (Count == 1)
-      return LandscapeType_Details.StreetTree;
-    else if (Count == 2)
-      return LandscapeType_Details.StreetTree;
-    else if (Count == 3)
-      return LandscapeType_Details.Forest;
     else
       return LandscapeType_Details.Forest;
   }
