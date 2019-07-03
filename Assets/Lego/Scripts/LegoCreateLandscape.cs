@@ -9,9 +9,9 @@ enum LandscapeType_OverView
 
 enum LandscapeType_Details
 {                                                                                                           //LandscapeType_Overview
-  House, Shop, Skyscraper,                                                                    //Building
-  River_Straight, River_Curve, River_Intersection_T, Sea,                                         //Water
-  Forest, Park,                                                                                 //Nature
+  House, Shop, Skyscraper,                                                                                  //Building
+  River_Straight, River_Curve, River_Intersection_T, Sea,                                                   //Water
+  Forest, Park,                                                                                             //Nature
   Road_Straight, Road_Curve, Road_Intersection_T, Road_Intersection_X, Road_Stop, Road_CrossWalk, Bridge,   //Road
   Space                                                                                                     //Spaces
 }
@@ -185,6 +185,7 @@ class LandscapeLegoInfo
 public class LegoCreateLandscape : MonoBehaviour
 {
   private LandscapeLegoInfo[,] landscapeLegoMap_ = new LandscapeLegoInfo[LegoData.LANDSCAPE_MAP_WIDTH, LegoData.LANDSCAPE_MAP_HEIGHT];
+  private LandscapeLegoInfo[,] roadMap = new LandscapeLegoInfo[LegoData.LANDSCAPE_MAP_WIDTH, LegoData.LANDSCAPE_MAP_HEIGHT];//ロードマップ
   private LegoCreateTex legoCreateTex_;
   // Start is called before the first frame update
   void Start()
@@ -238,7 +239,6 @@ public class LegoCreateLandscape : MonoBehaviour
   /// </summary>
   void UpdateLandscapeMap()
   {
-
     for (int y = 0; y < LegoData.LANDSCAPE_MAP_HEIGHT; y++)
     {
       for (int x = 0; x < LegoData.LANDSCAPE_MAP_WIDTH; x++)
@@ -276,8 +276,10 @@ public class LegoCreateLandscape : MonoBehaviour
             default:
               break;
           }
-        }
 
+          createRoadMap(x, y);
+        }
+   
         if (landscapeLegoMap_[x, y].overView != LandscapeType_OverView.Spaces)
         {
           Debug.Log("x:" + x + " y:" + y + " Detail:" + landscapeLegoMap_[x, y].detail + " Direction:" + landscapeLegoMap_[x, y].direction);
@@ -489,6 +491,17 @@ public class LegoCreateLandscape : MonoBehaviour
       return Direction.North;
   }
   
+  void createRoadMap(int x, int y)//roadMap作成
+  {
+        if (landscapeLegoMap_[x, y].overView != LandscapeType_OverView.Road)//RoadじゃないマスはSpaceで詰める
+        {
+            roadMap[x, y].overView = LandscapeType_OverView.Spaces;
+            roadMap[x, y].detail = LandscapeType_Details.Space;
+        }
+        else if (landscapeLegoMap_[x, y].detail != LandscapeType_Details.Space)
+            roadMap[x, y] = landscapeLegoMap_[x, y]; 
+  }
+
   void CreateLandscape()
   {
     LegoObjects.LoadGameObjects();
