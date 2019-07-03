@@ -10,8 +10,8 @@ enum LandscapeType_OverView
 enum LandscapeType_Details
 {                                                                                                           //LandscapeType_Overview
   House, Shop, Skyscraper,                                                                    //Building
-  River_Straight, River_Curve, River_Intersection_T, Sea, Fountain,                                         //Water
-  Forest, Park, StreetTree,                                                                                 //Nature
+  River_Straight, River_Curve, River_Intersection_T, Sea,                                         //Water
+  Forest, Park,                                                                                 //Nature
   Road_Straight, Road_Curve, Road_Intersection_T, Road_Intersection_X, Road_Stop, Road_CrossWalk, Bridge,   //Road
   Space                                                                                                     //Spaces
 }
@@ -178,9 +178,6 @@ class LandscapeLegoInfo
         case LandscapeType_Details.Sea:
           return LegoObjects.space;
 
-        case LandscapeType_Details.Fountain:
-          return LegoObjects.space;
-
         default:
           return LegoObjects.space;
       }
@@ -333,9 +330,6 @@ public class LegoCreateLandscape : MonoBehaviour
 
   LandscapeType_Details SetWaterDetails(LandscapeLegoInfo landscapeLegoMap)
   {
-    if (landscapeLegoMap.height >= 2)//高さが2以上あるなら噴水(Fountain)
-      return LandscapeType_Details.Fountain;
-
     int Count = 0;
 
     if (landscapeLegoMap.north == LandscapeType_OverView.Water)
@@ -432,12 +426,6 @@ public class LegoCreateLandscape : MonoBehaviour
 
     if (Count == 0)//東西南北のNatureの数で種類を判定
       return LandscapeType_Details.Park;
-    else if (Count == 1)
-      return LandscapeType_Details.StreetTree;
-    else if (Count == 2)
-      return LandscapeType_Details.StreetTree;
-    else if (Count == 3)
-      return LandscapeType_Details.Forest;
     else
       return LandscapeType_Details.Forest;
   }
