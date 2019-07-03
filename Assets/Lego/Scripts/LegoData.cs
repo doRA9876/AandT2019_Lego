@@ -2,12 +2,7 @@
 using System.Collections.Generic;
 using System;
 
-[Serializable]
-public struct LegoBlockInfo
-{
-  public LegoColor legoColor;
-  public int height;
-}
+
 
 public static class LegoData
 {
@@ -107,6 +102,8 @@ public static class LegoData
   public static readonly int DEPTH_CAMERA_HEIGHT = 480;
   public static readonly int LANDSCAPE_MAP_HEIGHT = 16;
   public static readonly int LANDSCAPE_MAP_WIDTH = 16;
+  public static readonly int LANDSCAPE_OBJECT_WIDTH = 10;
+  public static readonly int LANDSCAPE_OBJECT_HEIGHT = 10;
   public static readonly float MAX_DEPTH_NUM = 3975f;
   public static readonly int BUILDING_HIERARCHY_NUM = 6;
   public static readonly string SAVE_FILE_PATH = "/Lego/SaveData/";
