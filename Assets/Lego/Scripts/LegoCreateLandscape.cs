@@ -1,33 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using LegoEnum;
 
-enum LandscapeType_OverView
+
+
+enum Age
 {
-  Building, Water, Nature, Road, Spaces,
-}
-
-enum LandscapeType_Details
-{                                                                                                           //LandscapeType_Overview
-  House, Shop, Skyscraper,                                                                                  //Building
-  River_Straight, River_Curve, River_Intersection_T, Sea,                                                   //Water
-  Forest, Park,                                                                                             //Nature
-  Road_Straight, Road_Curve, Road_Intersection_T, Road_Intersection_X, Road_Stop, Road_CrossWalk, Bridge,   //Road
-  Space                                                                                                     //Spaces
-}
-
-enum Direction
-{
-  North, South, East, West
+  Modern, Middle, Fantasy,
 }
 
 class LandscapeLegoInfo
 {
-  public/*private*/ LandscapeType_OverView overView;
+  public LandscapeType_OverView overView;
   public LandscapeType_OverView north, south, east, west;
-  public/*private*/ LandscapeType_Details detail;
+  public LandscapeType_Details detail;
   public int height;
-  public/*private*/ Direction direction;
+  public Direction direction;
+  private Age age;
 
   public LandscapeLegoInfo(LegoColor lc)
   {
@@ -36,6 +24,7 @@ class LandscapeLegoInfo
     north = south = east = west = LandscapeType_OverView.Spaces;
     direction = Direction.North;
     height = 0;
+    age = Age.Modern;
   }
 
   void SetLegoType_OverView(LegoColor legoColor)
@@ -98,16 +87,27 @@ class LandscapeLegoInfo
 
     GameObject GetBuildingObject()
     {
-      switch (this.detail)
+      switch (this.age)
       {
-        case LandscapeType_Details.House:
-          return LegoObjects.building_1;
+        case Age.Modern:
+          switch (this.detail)
+          {
+            case LandscapeType_Details.House:
+              return LegoObjects.modern_building_1;
 
-        case LandscapeType_Details.Shop:
-          return LegoObjects.building_2;
+            case LandscapeType_Details.Shop:
+              return LegoObjects.modern_building_2;
 
-        case LandscapeType_Details.Skyscraper:
-          return LegoObjects.eiffelTower;
+            case LandscapeType_Details.Skyscraper:
+              return LegoObjects.eiffelTower;
+
+            default:
+              return LegoObjects.space;
+          }
+        
+        case Age.Middle:
+        
+        case Age.Fantasy:
 
         default:
           return LegoObjects.space;
@@ -119,25 +119,25 @@ class LandscapeLegoInfo
       switch (this.detail)
       {
         case LandscapeType_Details.Road_Straight:
-          return LegoObjects.road_straight;
+          return LegoObjects.modern_road_straight;
 
         case LandscapeType_Details.Road_Curve:
-          return LegoObjects.road_curve;
+          return LegoObjects.modern_road_curve;
 
         case LandscapeType_Details.Road_Intersection_T:
-          return LegoObjects.road_intersection_T;
+          return LegoObjects.modern_road_intersection_T;
 
         case LandscapeType_Details.Road_Intersection_X:
-          return LegoObjects.road_intersection_X;
+          return LegoObjects.modern_road_intersection_X;
 
         case LandscapeType_Details.Road_Stop:
-          return LegoObjects.road_stop;
+          return LegoObjects.modern_road_stop;
 
         case LandscapeType_Details.Road_CrossWalk:
-          return LegoObjects.road_crossWalk;
+          return LegoObjects.modern_road_crossWalk;
 
         case LandscapeType_Details.Bridge:
-          return LegoObjects.bridge;
+          return LegoObjects.modern_bridge;
 
         default:
           return LegoObjects.space;
@@ -187,7 +187,7 @@ public class LegoCreateLandscape : MonoBehaviour
   private LandscapeLegoInfo[,] landscapeLegoMap_ = new LandscapeLegoInfo[LegoData.LANDSCAPE_MAP_WIDTH, LegoData.LANDSCAPE_MAP_HEIGHT];
   private LandscapeLegoInfo[,] roadMap = new LandscapeLegoInfo[LegoData.LANDSCAPE_MAP_WIDTH, LegoData.LANDSCAPE_MAP_HEIGHT];//ロードマップ
   private LegoCreateTex legoCreateTex_;
-  // Start is called before the first frame update
+
   void Start()
   {
     LegoBlockInfo[,] legoBlockMap = JsonHelper_TwodimensionalArray.LoadJson<LegoBlockInfo>("savedata2.json");
@@ -195,6 +195,7 @@ public class LegoCreateLandscape : MonoBehaviour
     legoCreateTex_ = gameObject.GetComponent<LegoCreateTex>();
     legoCreateTex_.CreateTexture(legoBlockMap);
     ConvertLegoBlockInfo2LandscapeInfo(legoBlockMap);
+    LegoRiverMap legoRiverMap = new LegoRiverMap(landscapeLegoMap_);
     UpdateLandscapeMap();
     CreateLandscape();
   }
@@ -223,6 +224,8 @@ public class LegoCreateLandscape : MonoBehaviour
       }
     }
   }
+
+  
 
   /// <summary>
   /// 景観作成
@@ -511,6 +514,11 @@ public class LegoCreateLandscape : MonoBehaviour
       for (int x = 0; x < LegoData.LANDSCAPE_MAP_WIDTH; x++)
       {
         GameObject obj = landscapeLegoMap_[x, y].GetLegoObject();
+        if (obj == null)
+        {
+          Debug.LogError(landscapeLegoMap_[x, y].detail + "is not exist.");
+          obj = LegoObjects.space;
+        }
         float rotationAngle;
         switch (landscapeLegoMap_[x, y].direction)
         {

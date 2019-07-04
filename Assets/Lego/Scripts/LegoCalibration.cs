@@ -4,12 +4,9 @@
 */
 
 using System.Collections.Generic;
-using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEditor;
-using System.IO;
 
 internal struct BasePixelInfo
 {

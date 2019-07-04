@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using System;
-
-
+using LegoEnum;
 
 public static class LegoData
 {

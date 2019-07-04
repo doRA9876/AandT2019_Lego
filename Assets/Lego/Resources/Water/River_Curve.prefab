@@ -95,14 +95,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 3}
-      propertyPath: waterMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3300000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 11400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 3}
+      propertyPath: waterMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 3}
 --- !u!4 &3467386353048391004 stripped
@@ -178,6 +178,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2416733968201007103, guid: e4349552e54ec63429aae45923036c70,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9fd72986f306432458bc06b1694c4a7c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4349552e54ec63429aae45923036c70, type: 3}
 --- !u!4 &4391321709855558947 stripped

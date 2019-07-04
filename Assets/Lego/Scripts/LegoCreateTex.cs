@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using LegoEnum;
 
 public class LegoCreateTex : MonoBehaviour
 {
