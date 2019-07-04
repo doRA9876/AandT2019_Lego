@@ -197,6 +197,7 @@ public class LegoCreateLandscape : MonoBehaviour
     ConvertLegoBlockInfo2LandscapeInfo(legoBlockMap);
     LegoRiverMap legoRiverMap = new LegoRiverMap(landscapeLegoMap_);
     UpdateLandscapeMap();
+    LegoRoadMap roadMap = new LegoRoadMap(landscapeLegoMap_);
     CreateLandscape();
   }
 
@@ -280,7 +281,7 @@ public class LegoCreateLandscape : MonoBehaviour
               break;
           }
 
-          createRoadMap(x, y);
+          //createRoadMap(x, y);
         }
    
         if (landscapeLegoMap_[x, y].overView != LandscapeType_OverView.Spaces)
@@ -494,16 +495,18 @@ public class LegoCreateLandscape : MonoBehaviour
       return Direction.North;
   }
   
-  void createRoadMap(int x, int y)//roadMap作成
+  /*void createRoadMap(int x, int y)//roadMap作成
   {
+        roadMap[x, y] = new LandscapeLegoInfo();
+
         if (landscapeLegoMap_[x, y].overView != LandscapeType_OverView.Road || landscapeLegoMap_[x, y].detail == LandscapeType_Details.Space)//RoadじゃないマスはSpaceで詰める
         {
             roadMap[x, y].overView = LandscapeType_OverView.Spaces;
             roadMap[x, y].detail = LandscapeType_Details.Space;
         }
         else
-            roadMap[x, y] = landscapeLegoMap_[x, y]; 
-  }
+            roadMap[x, y] = landscapeLegoMap_[x, y];
+  }*/
 
   void CreateLandscape()
   {
@@ -547,4 +550,19 @@ public class LegoCreateLandscape : MonoBehaviour
       }
     }
   }
+
+    /*void SetPlayerObject()
+    {
+        GameObject player = (GameObject)Resources.Load("VR/Object/Player");
+
+        for (int y = 0; y < LegoData.LANDSCAPE_MAP_HEIGHT; y++)
+        {
+            for (int x = 0; x < LegoData.LANDSCAPE_MAP_WIDTH; x++)
+            {
+                
+            }
+        }
+
+        Instantiate(player, new Vector3(1f, 0f, 0f), Quaternion.identity);
+    }*/
 }
