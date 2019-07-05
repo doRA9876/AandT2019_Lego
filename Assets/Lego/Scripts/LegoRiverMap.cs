@@ -111,7 +111,9 @@ internal class LegoRiverMap
       for (int x = 0; x < LegoData.LANDSCAPE_MAP_WIDTH; x++)
       {
         if (overview[x, y] == LandscapeType_OverView.Water)
+        {
           landscapeMap[x, y].overView = overview[x, y];
+        }
       }
     }
   }
@@ -119,21 +121,21 @@ internal class LegoRiverMap
   LandscapeType_OverView[,] Expansion(LandscapeType_OverView[,] mapBefore)
   {
     LandscapeType_OverView[,] mapAfter = new LandscapeType_OverView[LegoData.LANDSCAPE_MAP_WIDTH, LegoData.LANDSCAPE_MAP_HEIGHT];
-    int a = 0b0101, b = 0b0100, c = 0b0110, d = 0b0010, e = 0b1010, f = 0b1000, g = 0b1001, h = 0b0001;
-
+    int up = 0b0100, down = 0b1000, left = 0b0001, right = 0b0010;
+    int a = up + left, b = up, c = up + right, d = right, e = right + down, f = down, g = down + left, h = left;
     for (int y = 0; y < LegoData.LANDSCAPE_MAP_HEIGHT; y++)
     {
       for (int x = 0; x < LegoData.LANDSCAPE_MAP_WIDTH; x++)
       {
         var position = 0b00000;
         //左辺
-        if (x == 0) position = position | 0b0001;
+        if (x == 0) position = position | left;
         //右辺
-        if (x == LegoData.LANDSCAPE_MAP_WIDTH - 1) position = position | 0b0010;
+        if (x == LegoData.LANDSCAPE_MAP_WIDTH - 1) position = position | right;
         //上辺
-        if (y == 0) position = position | 0b0100;
+        if (y == 0) position = position | up;
         //下辺
-        if (y == LegoData.LANDSCAPE_MAP_HEIGHT - 1) position = position | 0b1000;
+        if (y == LegoData.LANDSCAPE_MAP_HEIGHT - 1) position = position | down;
 
         /*
         ポジションから見た周囲のセル
@@ -156,6 +158,7 @@ internal class LegoRiverMap
         | g |       f      | e |
         ------------------------
         */
+        //0b0000 -> 淵部分ではない
         if (position != 0b0000)
         {
           LandscapeType_OverView cell = LandscapeType_OverView.Spaces;
@@ -206,20 +209,21 @@ internal class LegoRiverMap
   LandscapeType_OverView[,] Reduction(LandscapeType_OverView[,] mapBefore)
   {
     LandscapeType_OverView[,] mapAfter = new LandscapeType_OverView[LegoData.LANDSCAPE_MAP_WIDTH, LegoData.LANDSCAPE_MAP_HEIGHT];
-    int a = 0b0101, b = 0b0100, c = 0b0110, d = 0b0010, e = 0b1010, f = 0b1000, g = 0b1001, h = 0b0001;
+    int up = 0b0100, down = 0b1000, left = 0b0001, right = 0b0010;
+    int a = up + left, b = up, c = up + right, d = right, e = right + down, f = down, g = down + left, h = left;
     for (int y = 0; y < LegoData.LANDSCAPE_MAP_HEIGHT; y++)
     {
       for (int x = 0; x < LegoData.LANDSCAPE_MAP_WIDTH; x++)
       {
         var position = 0b00000;
         //左辺
-        if (x == 0) position = position | 0b0001;
+        if (x == 0) position = position | left;
         //右辺
-        if (x == LegoData.LANDSCAPE_MAP_WIDTH - 1) position = position | 0b0010;
+        if (x == LegoData.LANDSCAPE_MAP_WIDTH - 1) position = position | right;
         //上辺
-        if (y == 0) position = position | 0b0100;
+        if (y == 0) position = position | up;
         //下辺
-        if (y == LegoData.LANDSCAPE_MAP_HEIGHT - 1) position = position | 0b1000;
+        if (y == LegoData.LANDSCAPE_MAP_HEIGHT - 1) position = position | down;
 
         /*
         ポジションから見た周囲のセル
@@ -241,6 +245,8 @@ internal class LegoRiverMap
         |---|--------------|----
         | g |       f      | e |
         ------------------------
+
+        例：セル１はd, e, fの時だけ処理可能
         */
         if (position != 0b0000)
         {
@@ -350,24 +356,29 @@ internal class LegoRiverMap
           continue;
         }
 
-        int arround = 0b0000;
-        if (landscapeMap[x, y].north == LandscapeType_OverView.Water) arround = arround | 0b0001;
-        if (landscapeMap[x, y].south == LandscapeType_OverView.Water) arround = arround | 0b0010;
-        if (landscapeMap[x, y].east == LandscapeType_OverView.Water) arround = arround | 0b0100;
-        if (landscapeMap[x, y].west == LandscapeType_OverView.Water) arround = arround | 0b1000;
+        int arround = CheckArroundCell(x, y);
+        /*
+        arround => 周囲のwatercellの有無を示す8桁のビット列        
+        右(小さい位)から、
+        北・南・東・西・北西・北東・南東・南西
+        を示す。 
+        */
 
         switch (arround)
         {
+          //直線南北
           case 0b0011:
             riverMap[x, y].detail = LandscapeType_Details.River_Straight;
             riverMap[x, y].direction = Direction.North;
             break;
 
+          //直線東西
           case 0b1100:
             riverMap[x, y].detail = LandscapeType_Details.River_Straight;
             riverMap[x, y].direction = Direction.East;
             break;
 
+          //カーブ
           case 0b1010:
           case 0b1001:
           case 0b0110:
@@ -384,6 +395,7 @@ internal class LegoRiverMap
             riverMap[x, y].direction = direction_C;
             break;
 
+          //T字路
           case 0b0111:
           case 0b1011:
           case 0b1101:
@@ -401,6 +413,9 @@ internal class LegoRiverMap
             riverMap[x, y].direction = direction_T;
             break;
 
+          //周りがすべて水なので海
+          case 0b11111111:
+
           default:
             riverMap[x, y].detail = LandscapeType_Details.River_Straight;
             Direction direction_I = Direction.North;
@@ -415,6 +430,75 @@ internal class LegoRiverMap
             break;
         }
       }
+    }
+
+    int CheckArroundCell(int x, int y)
+    {
+      int up = 0b0100, down = 0b1000, left = 0b0001, right = 0b0010;
+      int a = up + left, b = up, c = up + right, d = right, e = right + down, f = down, g = down + left, h = left;
+      int arround = 0b00000000;
+      if (landscapeMap[x, y].north == LandscapeType_OverView.Water) arround = arround | 0b00000001;
+      if (landscapeMap[x, y].south == LandscapeType_OverView.Water) arround = arround | 0b00000010;
+      if (landscapeMap[x, y].east == LandscapeType_OverView.Water) arround = arround | 0b00000100;
+      if (landscapeMap[x, y].west == LandscapeType_OverView.Water) arround = arround | 0b00001000;
+
+
+      int position = 0b0000;
+      //左辺
+      if (x == 0) position = position | left;
+      //右辺
+      if (x == LegoData.LANDSCAPE_MAP_WIDTH - 1) position = position | right;
+      //上辺
+      if (y == 0) position = position | up;
+      //下辺
+      if (y == LegoData.LANDSCAPE_MAP_HEIGHT - 1) position = position | down;
+
+      /*
+      ポジションから見た周囲のセル
+      -------------
+      | 1 |   | 2 |
+      |------------
+      |   | p |   |
+      |------------
+      | 4 |   | 3 |
+      |------------
+
+      膨張・収縮処理の例外部分
+      ------------------------
+      | a |      b       | c |
+      |---|--------------|----
+      |   |              |   |
+      | h |              | d |
+      |   |              |   |
+      |---|--------------|----
+      | g |       f      | e |
+      ------------------------
+
+      例：セル１はd, e, fの時だけ処理可能
+      */
+      if (position != 0b0000)
+      {
+        //1 -> d, e, f
+        if (position == d || position == e || position == f)
+          if (landscapeMap[x - 1, y - 1].overView == LandscapeType_OverView.Water) arround = arround | 0b00010000;
+        //2 -> f,g,h
+        if (position == f || position == g || position == h)
+          if (landscapeMap[x + 1, y - 1].overView == LandscapeType_OverView.Water) arround = arround | 0b00100000;
+        //3 -> a, b, h
+        if (position == a || position == b || position == h)
+          if (landscapeMap[x + 1, y + 1].overView == LandscapeType_OverView.Water) arround = arround | 0b01000000;
+        //4 -> b, c, d
+        if (position == b || position == c || position == d)
+          if (landscapeMap[x - 1, y + 1].overView == LandscapeType_OverView.Water) arround = arround | 0b10000000;
+      }
+      else
+      {
+        if (landscapeMap[x - 1, y - 1].overView == LandscapeType_OverView.Water) arround = arround | 0b00010000;
+        if (landscapeMap[x + 1, y - 1].overView == LandscapeType_OverView.Water) arround = arround | 0b00100000;
+        if (landscapeMap[x + 1, y + 1].overView == LandscapeType_OverView.Water) arround = arround | 0b01000000;
+        if (landscapeMap[x - 1, y + 1].overView == LandscapeType_OverView.Water) arround = arround | 0b10000000;
+      }
+      return arround;
     }
   }
 }
