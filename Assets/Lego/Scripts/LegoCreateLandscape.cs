@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using LegoEnum;
 
-
-
 enum Age
 {
   Modern, Middle, Fantasy,
@@ -16,6 +14,11 @@ class LandscapeLegoInfo
   public int height;
   public Direction direction;
   private Age age;
+
+  public LandscapeLegoInfo()
+  {
+
+  }
 
   public LandscapeLegoInfo(LegoColor lc)
   {
@@ -104,9 +107,9 @@ class LandscapeLegoInfo
             default:
               return LegoObjects.space;
           }
-        
+
         case Age.Middle:
-        
+
         case Age.Fantasy:
 
         default:
@@ -194,7 +197,6 @@ public class LegoCreateLandscape : MonoBehaviour
     legoCreateTex_ = gameObject.GetComponent<LegoCreateTex>();
     legoCreateTex_.CreateTexture(legoBlockMap);
     ConvertLegoBlockInfo2LandscapeInfo(legoBlockMap);
-    LegoRiverMap legoRiverMap = new LegoRiverMap(landscapeLegoMap_);
     UpdateLandscapeMap();
     CreateLandscape();
   }
@@ -224,7 +226,7 @@ public class LegoCreateLandscape : MonoBehaviour
     }
   }
 
-  
+
 
   /// <summary>
   /// 景観作成
@@ -241,11 +243,19 @@ public class LegoCreateLandscape : MonoBehaviour
   /// </summary>
   void UpdateLandscapeMap()
   {
+    RiverLegoInfo[,] riverMap = new RiverLegoInfo[LegoData.LANDSCAPE_MAP_WIDTH, LegoData.LANDSCAPE_MAP_HEIGHT];
+    riverMap = new LegoRiverMap(landscapeLegoMap_).GetRiverLegoMap();
 
     for (int y = 0; y < LegoData.LANDSCAPE_MAP_HEIGHT; y++)
     {
       for (int x = 0; x < LegoData.LANDSCAPE_MAP_WIDTH; x++)
       {
+        if (riverMap[x, y].detail != LandscapeType_Details.Space)
+        {
+          landscapeLegoMap_[x, y].detail = riverMap[x, y].detail;
+          landscapeLegoMap_[x, y].direction = riverMap[x, y].direction;
+        }
+
         if (landscapeLegoMap_[x, y].height != 0)
         {
           switch (landscapeLegoMap_[x, y].overView)
@@ -255,11 +265,13 @@ public class LegoCreateLandscape : MonoBehaviour
               landscapeLegoMap_[x, y].direction = SetBuildingDirection(landscapeLegoMap_[x, y]);
               break;
 
+            /*
             case LandscapeType_OverView.Water:
               landscapeLegoMap_[x, y].detail = SetWaterDetails(landscapeLegoMap_[x, y]);
               SetSeaDetails(x, y);
               landscapeLegoMap_[x, y].direction = SetWaterDirection(landscapeLegoMap_[x, y]);
               break;
+              */
 
             case LandscapeType_OverView.Nature:
               landscapeLegoMap_[x, y].detail = SetNatureDetails(landscapeLegoMap_[x, y]);
