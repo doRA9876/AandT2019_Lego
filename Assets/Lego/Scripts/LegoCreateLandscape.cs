@@ -542,7 +542,7 @@ public class LegoCreateLandscape : MonoBehaviour
             break;
         }
 
-        Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, 0f, y * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
+        Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, 0f, (LegoData.LANDSCAPE_MAP_HEIGHT - y) * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
       }
     }
   }

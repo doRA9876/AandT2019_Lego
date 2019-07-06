@@ -1,57 +1,49 @@
 ﻿using UnityEngine;
+using LegoEnum;
 
 public class RoadPointCircuit : MonoBehaviour
 {
   [SerializeField, HeaderAttribute("Parent")]
   private Transform parent;
-  [SerializeField, HeaderAttribute("RightSide RoadPoint")]
-  private Transform roadPointR1;
+  [SerializeField, HeaderAttribute("RoadPoint")]
+  private Transform roadPoint1;
   [SerializeField]
-  private Transform roadPointR2, roadPointR3;
-  [SerializeField, HeaderAttribute("LeftSide RoadPoint")]
-  private Transform roadPointL1;
-  [SerializeField]
-  private Transform roadPointL2, roadPointL3;
+  private Transform roadPoint2, roadPoint3;
 
-  public RoadPoint GetCurveRoadPoint_R()
+  public RoadPoint GetCurveRoadPoint(Direction enter, Direction exit)
   {
-    
-    Vector3[] point = new Vector3[3];
-    point[0] = roadPointR1.position;
-    point[1] = roadPointR2.position;
-    point[2] = roadPointR3.position;
     RoadPoint roadPoint = new RoadPoint(3);
-    roadPoint.point = point;
-    return roadPoint;
-  }
-
-  public RoadPoint GetCurveRoadPoint_L()
-  {
     Vector3[] point = new Vector3[3];
-    point[0] = roadPointL1.position;
-    point[1] = roadPointL2.position;
-    point[2] = roadPointL3.position;
-    RoadPoint roadPoint = new RoadPoint(3);
+    if (enter == Direction.North)
+    {
+      point[0] = roadPoint1.position;
+      point[1] = roadPoint2.position;
+      point[2] = roadPoint3.position;
+    }
+    else
+    {
+      point[0] = roadPoint3.position;
+      point[1] = roadPoint2.position;
+      point[2] = roadPoint1.position;
+    }
     roadPoint.point = point;
     return roadPoint;
   }
 
-  public RoadPoint GetStraightRoadPoint_R()
+  public RoadPoint GetStraightRoadPoint(Direction enter, Direction exit)
   {
-    Vector3[] point = new Vector3[2];
-    point[0] = roadPointR1.position;
-    point[1] = roadPointR2.position;
     RoadPoint roadPoint = new RoadPoint(2);
-    roadPoint.point = point;
-    return roadPoint;
-  }
-
-  public RoadPoint GetStraightRoadPoint_L()
-  {
     Vector3[] point = new Vector3[2];
-    point[0] = roadPointL1.position;
-    point[1] = roadPointL2.position;
-    RoadPoint roadPoint = new RoadPoint(2);
+    if (enter == Direction.North)
+    {
+      point[0] = roadPoint1.position;
+      point[1] = roadPoint2.position;
+    }
+    else
+    {
+      point[0] = roadPoint2.position;
+      point[1] = roadPoint1.position;
+    }
     roadPoint.point = point;
     return roadPoint;
   }
