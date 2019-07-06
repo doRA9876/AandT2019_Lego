@@ -23,7 +23,7 @@ public static class LegoObjects
 
 
   //Water
-  public static GameObject river_straight, river_curve, river_intersection_T;
+  public static GameObject river_straight, river_curve, river_intersection_T, pond, sea;
 
   //Nature
   public static GameObject forest_1;
@@ -56,6 +56,8 @@ public static class LegoObjects
     river_straight = (GameObject)Resources.Load("Water/River_Straight");
     river_curve = (GameObject)Resources.Load("Water/River_Curve");
     river_intersection_T = (GameObject)Resources.Load("Water/River_Intersection_T");
+    sea = (GameObject)Resources.Load("Water/Sea");
+    pond = (GameObject)Resources.Load("Water/Pond");
 
     //Nature
     forest_1 = (GameObject)Resources.Load("Nature/Forest_1");

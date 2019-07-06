@@ -16,7 +16,7 @@ class MovingCar
 
   public void Move()
   {
-    float t = timeElapsed / 5f;
+    float t = timeElapsed / LegoData.CAR_SPEED;
     Vector2 p0 = new Vector2(wayPoint[0].x, wayPoint[0].z);
     Vector2 p1 = new Vector2(wayPoint[1].x, wayPoint[1].z);
     Vector2 p2 = new Vector2(wayPoint[2].x, wayPoint[2].z);
@@ -55,7 +55,7 @@ public class MoveCar : MonoBehaviour
       item.timeElapsed += Time.deltaTime;
       item.Move();
 
-      if(item.timeElapsed > 5f)
+      if(item.timeElapsed > LegoData.CAR_SPEED)
       {
         movingCar.Remove(item);
       }

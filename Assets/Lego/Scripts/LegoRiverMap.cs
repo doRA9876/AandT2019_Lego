@@ -45,12 +45,12 @@ internal class LegoRiverMap
   {
     LandscapeType_OverView[,] waterOverviewMap = new LandscapeType_OverView[LegoData.LANDSCAPE_MAP_WIDTH, LegoData.LANDSCAPE_MAP_HEIGHT];
     int[,] label = new int[LegoData.LANDSCAPE_MAP_WIDTH, LegoData.LANDSCAPE_MAP_HEIGHT];
-    int iterationNumber = 0;
+    //int iterationNumber = 0;
     Init();
+    /*
     label = Labeling(waterOverviewMap);
     while (labelCount > 1)
     {
-
       for (int i = 0; i < iterationNumber; i++)
       {
         waterOverviewMap = Expansion(waterOverviewMap);
@@ -62,6 +62,9 @@ internal class LegoRiverMap
       label = Labeling(waterOverviewMap);
       iterationNumber++;
     }
+    */
+    waterOverviewMap = Expansion(waterOverviewMap);
+    waterOverviewMap = Reduction(waterOverviewMap);
     UpdateLandscapeMap_overview(waterOverviewMap);
     UpdateDirection();
     SetWaterDetail();
@@ -113,6 +116,8 @@ internal class LegoRiverMap
         if (overview[x, y] == LandscapeType_OverView.Water)
         {
           landscapeMap[x, y].overView = overview[x, y];
+        }else{
+          landscapeMap[x, y].overView = LandscapeType_OverView.Spaces;
         }
       }
     }
@@ -215,7 +220,7 @@ internal class LegoRiverMap
     {
       for (int x = 0; x < LegoData.LANDSCAPE_MAP_WIDTH; x++)
       {
-        var position = 0b00000;
+        var position = 0b0000;
         //左辺
         if (x == 0) position = position | left;
         //右辺
@@ -431,9 +436,17 @@ internal class LegoRiverMap
             }
             riverMap[x, y].direction = direction;
             break;
+          
+          case 0b0000:
+            riverMap[x, y].detail = LandscapeType_Details.Pond;
+            riverMap[x, y].direction = Direction.North;
+            break;
 
           //周りがすべて水なので海
           case 0b11111111:
+            riverMap[x, y].detail = LandscapeType_Details.Sea;
+            direction = Direction.North;
+            break;
 
           default:
             riverMap[x, y].detail = LandscapeType_Details.River_Straight;

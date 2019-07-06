@@ -161,7 +161,10 @@ class LandscapeLegoInfo
           return LegoObjects.river_curve;
 
         case LandscapeType_Details.Sea:
-          return LegoObjects.space;
+          return LegoObjects.sea;
+        
+        case LandscapeType_Details.Pond:
+          return LegoObjects.pond;
 
         default:
           return LegoObjects.space;
@@ -192,8 +195,8 @@ public class LegoCreateLandscape : MonoBehaviour
 
   void Start()
   {
-    LegoBlockInfo[,] legoBlockMap = JsonHelper_TwodimensionalArray.LoadJson<LegoBlockInfo>("savedata2.json");
-    //LegoBlockInfo[,] legoBlockMap = LegoData.legoMap;
+    //LegoBlockInfo[,] legoBlockMap = JsonHelper_TwodimensionalArray.LoadJson<LegoBlockInfo>("savedata4.json");
+    LegoBlockInfo[,] legoBlockMap = LegoData.legoMap;
     legoCreateTex_ = gameObject.GetComponent<LegoCreateTex>();
     legoCreateTex_.CreateTexture(legoBlockMap);
     ConvertLegoBlockInfo2LandscapeInfo(legoBlockMap);
@@ -542,7 +545,7 @@ public class LegoCreateLandscape : MonoBehaviour
             break;
         }
 
-        Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, 0f, (LegoData.LANDSCAPE_MAP_HEIGHT - y) * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
+        Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, 0f,  y * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
       }
     }
   }
