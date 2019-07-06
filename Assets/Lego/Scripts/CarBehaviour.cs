@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-class RoadPoint
+public class RoadPoint
 {
   public Vector3[] point;
   public int length;
@@ -15,18 +15,19 @@ class RoadPoint
 public class CarBehaviour : MonoBehaviour
 {
   private float timeElapsed;
-  private RoadPoint[] roadPointArray = new RoadPoint[2];
+  private RoadPoint[] roadPointArray = new RoadPoint[3];
+  [SerializeField]
+  GameObject cell1, cell2, cell3;
   int roadPointNum;
   void Start()
   {
-    this.transform.position = new Vector3(-1f, 0f, 15f);
-    roadPointArray[0] = new RoadPoint(2);
-    roadPointArray[0].point[0] = new Vector3(1f, 0f, 15f);
-    roadPointArray[0].point[1] = new Vector3(1f, 0f, 5f);
-    roadPointArray[1] = new RoadPoint(3);
-    roadPointArray[1].point[0] = new Vector3(1f, 0f, 5f);
-    roadPointArray[1].point[1] = new Vector3(1f, 0f, -1f);
-    roadPointArray[1].point[2] = new Vector3(-5f, 0f, -1f);
+    RoadPointCircuit rc = cell1.GetComponent<RoadPointCircuit>();
+    roadPointArray[0] = rc.GetStraightRoadPoint_R();
+    rc = cell2.GetComponent<RoadPointCircuit>();
+    roadPointArray[1] = rc.GetStraightRoadPoint_R();
+    rc = cell3.GetComponent<RoadPointCircuit>();
+    roadPointArray[2] = rc.GetCurveRoadPoint_R();
+    this.transform.position = roadPointArray[0].point[0];
 
     timeElapsed = 0f;
     roadPointNum = 0;

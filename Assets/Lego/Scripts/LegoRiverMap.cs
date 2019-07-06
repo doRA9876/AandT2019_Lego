@@ -364,8 +364,27 @@ internal class LegoRiverMap
         を示す。 
         */
 
+        arround = arround & 0b00001111;
+
+        Direction direction = Direction.North;
         switch (arround)
         {
+          case 0b0001:
+          case 0b0010:
+          case 0b0100:
+          case 0b1000:
+            riverMap[x, y].detail = LandscapeType_Details.River_Straight;
+            direction = Direction.North;
+            switch (arround)
+            {
+              case 0b0001: direction = Direction.North; break;
+              case 0b0010: direction = Direction.South; break;
+              case 0b0100: direction = Direction.East; break;
+              case 0b1000: direction = Direction.West; break;
+            }
+            riverMap[x, y].direction = direction;
+            break;
+
           //直線南北
           case 0b0011:
             riverMap[x, y].detail = LandscapeType_Details.River_Straight;
@@ -384,15 +403,15 @@ internal class LegoRiverMap
           case 0b0110:
           case 0b0101:
             riverMap[x, y].detail = LandscapeType_Details.River_Curve;
-            Direction direction_C = Direction.North;
+            direction = Direction.North;
             switch (arround)
             {
-              case 0b1010: direction_C = Direction.South; break;
-              case 0b1001: direction_C = Direction.West; break;
-              case 0b0110: direction_C = Direction.East; break;
-              case 0b0101: direction_C = Direction.North; break;
+              case 0b1010: direction = Direction.South; break;
+              case 0b1001: direction = Direction.West; break;
+              case 0b0110: direction = Direction.East; break;
+              case 0b0101: direction = Direction.North; break;
             }
-            riverMap[x, y].direction = direction_C;
+            riverMap[x, y].direction = direction;
             break;
 
           //T字路
@@ -401,16 +420,16 @@ internal class LegoRiverMap
           case 0b1101:
           case 0b1110:
             riverMap[x, y].detail = LandscapeType_Details.River_Intersection_T;
-            Direction direction_T = Direction.North;
+            direction = Direction.North;
             switch (arround)
             {
-              case 0b0111: direction_C = Direction.West; break;
-              case 0b1011: direction_C = Direction.East; break;
-              case 0b1101: direction_C = Direction.South; break;
-              case 0b1110: direction_C = Direction.North; break;
+              case 0b0111: direction = Direction.West; break;
+              case 0b1011: direction = Direction.East; break;
+              case 0b1101: direction = Direction.South; break;
+              case 0b1110: direction = Direction.North; break;
 
             }
-            riverMap[x, y].direction = direction_T;
+            riverMap[x, y].direction = direction;
             break;
 
           //周りがすべて水なので海
@@ -418,15 +437,8 @@ internal class LegoRiverMap
 
           default:
             riverMap[x, y].detail = LandscapeType_Details.River_Straight;
-            Direction direction_I = Direction.North;
-            switch (arround)
-            {
-              case 0b0001: direction_I = Direction.North; break;
-              case 0b0010: direction_I = Direction.North; break;
-              case 0b0100: direction_I = Direction.North; break;
-              case 0b1000: direction_I = Direction.North; break;
-            }
-            riverMap[x, y].direction = direction_I;
+            direction = Direction.North;
+            riverMap[x, y].direction = direction;
             break;
         }
       }
