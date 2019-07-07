@@ -206,7 +206,7 @@ public class LegoBase : MonoBehaviour
 
   public void OnButtonClicked()
   {
-    string savedataName = "savedata" + DateTime.Now.ToString("yyyyMMddhhmmss") + ".json";
+    string savedataName = "savedata" + DateTime.Now.ToString("MM_dd_hh_mm") + ".json";
     LegoData.legoMap = currentLandscapeMap_;
     JsonHelper_TwodimensionalArray.SaveAsJson(currentLandscapeMap_, LegoData.LANDSCAPE_MAP_WIDTH, LegoData.LANDSCAPE_MAP_HEIGHT, savedataName);
 
