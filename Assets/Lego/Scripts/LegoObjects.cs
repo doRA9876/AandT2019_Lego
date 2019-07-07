@@ -23,7 +23,7 @@ public static class LegoObjects
 
 
   //Water
-  public static GameObject river_straight, river_curve, river_intersection_T;
+  public static GameObject river_straight, river_curve, river_intersection_T, pond, sea;
 
   //Nature
   public static GameObject forest_1;
@@ -39,8 +39,8 @@ public static class LegoObjects
     modern_road_intersection_T = (GameObject)Resources.Load("Modern/Road/Road_Intersection_T");
     modern_road_intersection_X = (GameObject)Resources.Load("Modern/Road/Road_Intersection_X");
     modern_road_curve = (GameObject)Resources.Load("Modern/Road/Road_Curve");
-    modern_road_stop = (GameObject)Resources.Load("Modern/Road/Road_Stop");
-    modern_road_crossWalk = (GameObject)Resources.Load("Modern/Road/Road_Crosswalk");
+    modern_road_stop = (GameObject)Resources.Load("Modern/Road/Underpass");//(GameObject)Resources.Load("Modern/Road/Road_Stop");
+        modern_road_crossWalk = (GameObject)Resources.Load("Modern/Road/Road_Crosswalk");
     modern_bridge = (GameObject)Resources.Load("Modern/Road/Bridge");
 
     //Building
@@ -56,6 +56,8 @@ public static class LegoObjects
     river_straight = (GameObject)Resources.Load("Water/River_Straight");
     river_curve = (GameObject)Resources.Load("Water/River_Curve");
     river_intersection_T = (GameObject)Resources.Load("Water/River_Intersection_T");
+    sea = (GameObject)Resources.Load("Water/Sea");
+    pond = (GameObject)Resources.Load("Water/Pond");
 
     //Nature
     forest_1 = (GameObject)Resources.Load("Nature/Forest_1");
