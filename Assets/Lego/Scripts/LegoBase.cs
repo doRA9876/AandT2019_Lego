@@ -30,6 +30,7 @@ public class LegoBase : MonoBehaviour
   private LegoBlockInfo[,] currentLandscapeMap_ = new LegoBlockInfo[LegoData.LANDSCAPE_MAP_WIDTH, LegoData.LANDSCAPE_MAP_HEIGHT];
   private static readonly int MAX_CREATE_NUM = 60;
   private float timeLeft__1FPS_, timeLeft__15FPS_;
+  private AudioSource audioSource;
   #endregion
 
   protected void Start()
@@ -44,6 +45,9 @@ public class LegoBase : MonoBehaviour
     timeLeft__1FPS_ = 1.0f;
 
     legoCreateTex_ = gameObject.GetComponent<LegoCreateTex>();
+
+    audioSource = GetComponent<AudioSource>();
+    audioSource.PlayOneShot(audioSource.clip);
   }
 
   void Update()

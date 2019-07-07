@@ -10,6 +10,7 @@ public class LegoInit : MonoBehaviour
   GameObject kinectCamera, viewCamera;
   Vector3 cameraCenterPoint = new Vector3(80f, 0f, 80f);
   float radious = 100f;
+  AudioSource audioSource;
 
   void Awake()
   {
@@ -22,6 +23,8 @@ public class LegoInit : MonoBehaviour
     {
       LegoData.isCalibrated = true;
     }
+    audioSource = GetComponent<AudioSource>();
+    audioSource.PlayOneShot(audioSource.clip);
   }
 
   void Update()
