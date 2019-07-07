@@ -7,7 +7,14 @@ using UnityEngine.UI;
 public class LegoInit : MonoBehaviour
 {
   [SerializeField]
-  private Text text_;
+  GameObject kinectCamera, viewCamera;
+  Vector3 cameraCenterPoint = new Vector3(80f, 0f, 80f);
+  float radious = 100f;
+
+  void Awake()
+  {
+    if (!LegoObjects.IsLoaded) LegoObjects.LoadGameObjects();
+  }
 
   void Start()
   {
@@ -15,13 +22,21 @@ public class LegoInit : MonoBehaviour
     {
       LegoData.isCalibrated = true;
     }
+  }
 
-    if (!LegoObjects.IsLoaded) LegoObjects.LoadGameObjects();
+  void Update()
+  {
+    float x = radious * Mathf.Sin(Time.time/5f) + cameraCenterPoint.x;
+    float z = radious * Mathf.Cos(Time.time/5f) + cameraCenterPoint.z;
+    viewCamera.transform.position = new Vector3(x, 80f, z);
+    Vector3 toCenterVec = new Vector3(cameraCenterPoint.x - x, -80f, cameraCenterPoint.z - z);
+    viewCamera.transform.rotation = Quaternion.LookRotation(toCenterVec);
   }
 
   public void OnClickButton_yes()
   {
-    text_.text = "Calibration画面へ移行します。";
+    kinectCamera.SetActive(true);
+    Debug.Log("Calibration画面へ移行します。");
     LegoData.isInitialized = true;
     StartCoroutine(LegoGeneric.DelayMethod(3.5f, () =>
     {
@@ -31,10 +46,11 @@ public class LegoInit : MonoBehaviour
 
   public void OnClickButton_no()
   {
+    kinectCamera.SetActive(true);
     LegoData.isInitialized = true;
     if (LegoData.isCalibrated)
     {
-      text_.text = "Main画面へ移行します。";
+      Debug.Log("Main画面へ移行します。");
       StartCoroutine(LegoGeneric.DelayMethod(3.5f, () =>
       {
         SceneManager.LoadScene("Main");
@@ -42,7 +58,7 @@ public class LegoInit : MonoBehaviour
     }
     else
     {
-      text_.text = "Calibration Dataがありません。\nCalibration画面に移行します。";
+      Debug.Log("Calibration Dataがありません。\nCalibration画面に移行します。");
       StartCoroutine(LegoGeneric.DelayMethod(3.5f, () =>
       {
         SceneManager.LoadScene("Calibration");
