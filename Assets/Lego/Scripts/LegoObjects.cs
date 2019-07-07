@@ -39,8 +39,8 @@ public static class LegoObjects
     modern_road_intersection_T = (GameObject)Resources.Load("Modern/Road/Road_Intersection_T");
     modern_road_intersection_X = (GameObject)Resources.Load("Modern/Road/Road_Intersection_X");
     modern_road_curve = (GameObject)Resources.Load("Modern/Road/Road_Curve");
-    modern_road_stop = (GameObject)Resources.Load("Modern/Road/Road_Stop");
-    modern_road_crossWalk = (GameObject)Resources.Load("Modern/Road/Road_Crosswalk");
+    modern_road_stop = (GameObject)Resources.Load("Modern/Road/Underpass");//(GameObject)Resources.Load("Modern/Road/Road_Stop");
+        modern_road_crossWalk = (GameObject)Resources.Load("Modern/Road/Road_Crosswalk");
     modern_bridge = (GameObject)Resources.Load("Modern/Road/Bridge");
 
     //Building
