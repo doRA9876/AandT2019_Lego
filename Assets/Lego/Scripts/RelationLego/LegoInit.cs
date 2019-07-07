@@ -36,7 +36,7 @@ public class LegoInit : MonoBehaviour
     viewCamera.transform.rotation = Quaternion.LookRotation(toCenterVec);
   }
 
-  public void OnClickButton_yes()
+  public void OnClickButton_Calibration()
   {
     kinectCamera.SetActive(true);
     Debug.Log("Calibration画面へ移行します。");
@@ -47,7 +47,7 @@ public class LegoInit : MonoBehaviour
     }));
   }
 
-  public void OnClickButton_no()
+  public void OnClickButton_Play()
   {
     kinectCamera.SetActive(true);
     LegoData.isInitialized = true;
