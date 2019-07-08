@@ -132,6 +132,12 @@ class LandscapeLegoInfo
         case LandscapeType_Details.Road_Intersection_X:
           return LegoObjects.modern_road_intersection_X;
 
+        case LandscapeType_Details.Road_Underpass:
+          return LegoObjects.modern_road_underpass;
+
+        case LandscapeType_Details.Road_Tunnel:
+          return LegoObjects.modern_road_tunnel;
+
         case LandscapeType_Details.Road_Stop:
           return LegoObjects.modern_road_stop;
 
@@ -556,7 +562,10 @@ public class LegoCreateLandscape : MonoBehaviour
     void CreateRoad_StopAfter(int x, int y)
     {
       if (x == 15 || y == 15 || x == 0 || y == 0)
+      {
+        landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Tunnel;
         return;
+      }
 
       int NorthCount = 0, SouthCount = 0, EastCount = 0, WestCount = 0;
       if (landscapeLegoMap_[x, y].north == LandscapeType_OverView.Road)
@@ -573,7 +582,7 @@ public class LegoCreateLandscape : MonoBehaviour
         landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Straight;
 
         landscapeLegoMap_[x, y + 1].overView = LandscapeType_OverView.Road;
-        landscapeLegoMap_[x, y + 1].detail = LandscapeType_Details.Road_Stop;
+        landscapeLegoMap_[x, y + 1].detail = LandscapeType_Details.Road_Underpass;
         landscapeLegoMap_[x, y + 1].direction = Direction.North;
         landscapeLegoMap_[x, y + 1].north = LandscapeType_OverView.Road;
 
@@ -584,7 +593,7 @@ public class LegoCreateLandscape : MonoBehaviour
         landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Straight;
 
         landscapeLegoMap_[x, y - 1].overView = LandscapeType_OverView.Road;
-        landscapeLegoMap_[x, y - 1].detail = LandscapeType_Details.Road_Stop;
+        landscapeLegoMap_[x, y - 1].detail = LandscapeType_Details.Road_Underpass;
         landscapeLegoMap_[x, y - 1].direction = Direction.South;
         landscapeLegoMap_[x, y - 1].south = LandscapeType_OverView.Road;
 
@@ -595,7 +604,7 @@ public class LegoCreateLandscape : MonoBehaviour
         landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Straight;
 
         landscapeLegoMap_[x - 1, y].overView = LandscapeType_OverView.Road;
-        landscapeLegoMap_[x - 1, y].detail = LandscapeType_Details.Road_Stop;
+        landscapeLegoMap_[x - 1, y].detail = LandscapeType_Details.Road_Underpass;
         landscapeLegoMap_[x - 1, y].direction = Direction.East;
         landscapeLegoMap_[x - 1, y].east = LandscapeType_OverView.Road;
 
@@ -606,7 +615,7 @@ public class LegoCreateLandscape : MonoBehaviour
         landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Straight;
 
         landscapeLegoMap_[x + 1, y].overView = LandscapeType_OverView.Road;
-        landscapeLegoMap_[x + 1, y].detail = LandscapeType_Details.Road_Stop;
+        landscapeLegoMap_[x + 1, y].detail = LandscapeType_Details.Road_Underpass;
         landscapeLegoMap_[x + 1, y].direction = Direction.West;
         landscapeLegoMap_[x + 1, y].west = LandscapeType_OverView.Road;
 

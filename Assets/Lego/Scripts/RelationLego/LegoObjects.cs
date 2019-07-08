@@ -10,7 +10,7 @@ public static class LegoObjects
 
   //Modern
   //Road
-  public static GameObject modern_road_straight, modern_road_intersection_T, modern_road_intersection_X, modern_road_curve, modern_road_stop, modern_road_crossWalk, modern_bridge;
+  public static GameObject modern_road_straight, modern_road_intersection_T, modern_road_intersection_X, modern_road_curve, modern_road_tunnel, modern_road_underpass, modern_road_stop, modern_road_crossWalk, modern_bridge;
 
   //Building
   public static GameObject modern_building_1, modern_building_2;
@@ -39,8 +39,10 @@ public static class LegoObjects
     modern_road_intersection_T = (GameObject)Resources.Load("Modern/Road/Road_Intersection_T");
     modern_road_intersection_X = (GameObject)Resources.Load("Modern/Road/Road_Intersection_X");
     modern_road_curve = (GameObject)Resources.Load("Modern/Road/Road_Curve");
-    modern_road_stop = (GameObject)Resources.Load("Modern/Road/Underpass");//(GameObject)Resources.Load("Modern/Road/Road_Stop");
-        modern_road_crossWalk = (GameObject)Resources.Load("Modern/Road/Road_Crosswalk");
+    modern_road_tunnel = (GameObject)Resources.Load("Modern/Road/Tunnel");
+    modern_road_underpass = (GameObject)Resources.Load("Modern/Road/Underpass");
+    modern_road_stop = (GameObject)Resources.Load("Modern/Road/Tunnel");//(GameObject)Resources.Load("Modern/Road/Underpass");//(GameObject)Resources.Load("Modern/Road/Road_Stop");
+    modern_road_crossWalk = (GameObject)Resources.Load("Modern/Road/Road_Crosswalk");
     modern_bridge = (GameObject)Resources.Load("Modern/Road/Bridge");
 
     //Building
