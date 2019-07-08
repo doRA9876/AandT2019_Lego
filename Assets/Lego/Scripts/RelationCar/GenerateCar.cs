@@ -17,6 +17,7 @@ public class GenerateCar : MonoBehaviour
 
   void Update()
   {
+    /*
     elapsedTime += Time.deltaTime;
 
     if(elapsedTime > nextGenerateTiming)
@@ -25,6 +26,7 @@ public class GenerateCar : MonoBehaviour
       nextGenerateTiming = Random.Range(5f, 10f);
       ExecuteGeneration();
     }
+    */
   }
 
   public void ExecuteGeneration()

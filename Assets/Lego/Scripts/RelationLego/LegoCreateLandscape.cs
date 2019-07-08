@@ -13,7 +13,6 @@ class LandscapeLegoInfo
   public LandscapeType_Details detail;
   public int height;
   public Direction direction;
-  private Age age;
 
   public LandscapeLegoInfo()
   {
@@ -27,7 +26,6 @@ class LandscapeLegoInfo
     north = south = east = west = LandscapeType_OverView.Spaces;
     direction = Direction.North;
     height = 0;
-    age = Age.Modern;
   }
 
   void SetLegoType_OverView(LegoColor legoColor)
@@ -89,27 +87,16 @@ class LandscapeLegoInfo
 
     GameObject GetBuildingObject()
     {
-      switch (this.age)
+      switch (this.detail)
       {
-        case Age.Modern:
-          switch (this.detail)
-          {
-            case LandscapeType_Details.House:
-              return LegoObjects.modern_building_1;
+        case LandscapeType_Details.House:
+          return LegoObjects.modern_building_1;
 
-            case LandscapeType_Details.Shop:
-              return LegoObjects.modern_building_2;
+        case LandscapeType_Details.Shop:
+          return LegoObjects.modern_building_2;
 
-            case LandscapeType_Details.Skyscraper:
-              return LegoObjects.eiffelTower;
-
-            default:
-              return LegoObjects.space;
-          }
-
-        case Age.Middle:
-
-        case Age.Fantasy:
+        case LandscapeType_Details.Skyscraper:
+          return LegoObjects.eiffelTower;
 
         default:
           return LegoObjects.space;
