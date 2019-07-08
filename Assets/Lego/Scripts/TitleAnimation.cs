@@ -32,6 +32,16 @@ public class TitleAnimation : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
+    if (Input.GetKey(KeyCode.Space))
+    {
+      if(step >= 4) return;
+      block.localPosition = new Vector3(0, -160, 0);
+      art.localPosition = new Vector3(0, -80, 0);
+      stack.localPosition = new Vector3(0, 0, 0);
+      logo.localPosition = new Vector3(0, 80, 0);
+      step = 4;
+    }
+
     switch (step)
     {
       case 0:
