@@ -211,7 +211,9 @@ public class LegoCreateLandscape : MonoBehaviour
     CreateLandscape();
 
     if (isPlayable)
+    {
       SetStartPlayerPosition();
+    }
   }
 
   void ConvertLegoBlockInfo2LandscapeInfo(LegoBlockInfo[,] legoBlockMap)
@@ -647,10 +649,31 @@ public class LegoCreateLandscape : MonoBehaviour
 
   void SetStartPlayerPosition()//プレイヤーの初期位置を決める
   {
-    GameObject player = GameObject.Find("[CameraRig]");
-
+    ViewSpot spotScript = gameObject.GetComponent<ViewSpot>();
+    spotScript.Init();
     MovePosition();
 
+    void MovePosition()//配置場所の優先順位:Road_Intersection_X > Road_Intersection_T > otherRoadDetails > Center: 優先順位の高いdetailが無ければ次の優先順位のdetailに配置する
+    {
+      for (int y = 0; y < LegoData.LANDSCAPE_MAP_HEIGHT; y++)
+      {
+        for (int x = 0; x < LegoData.LANDSCAPE_MAP_WIDTH; x++)
+        {
+          if (landscapeLegoMap_[x, y].detail == LandscapeType_Details.Road_Intersection_X)
+          {
+            spotScript.Move(x, y);
+            return;
+          }
+          else if (landscapeLegoMap_[x, y].detail == LandscapeType_Details.Road_Intersection_T)
+          {
+            spotScript.Move(x, y);
+            return;
+          }
+        }
+      }
+      spotScript.MoveRandom();
+    }
+    /*
     void MovePosition()//配置場所の優先順位:Road_Intersection_X > Road_Intersection_T > otherRoadDetails > Center: 優先順位の高いdetailが無ければ次の優先順位のdetailに配置する
     {
       int[] TCount = new int[2] { -1, -1 }, otherCount = new int[2] { -1, -1 };
@@ -660,7 +683,8 @@ public class LegoCreateLandscape : MonoBehaviour
         {
           if (landscapeLegoMap_[x, y].detail == LandscapeType_Details.Road_Intersection_X)
           {
-            player.transform.position = new Vector3((x * LegoData.LANDSCAPE_OBJECT_WIDTH) - 4.5f, 0f, (y * LegoData.LANDSCAPE_OBJECT_HEIGHT) - 4.5f);
+            //player.transform.position = new Vector3((x * LegoData.LANDSCAPE_OBJECT_WIDTH) - 4.5f, 0f, (y * LegoData.LANDSCAPE_OBJECT_HEIGHT) - 4.5f);
+            spotScript.MovePosition(x, y);
             return;
           }
           else if (landscapeLegoMap_[x, y].detail == LandscapeType_Details.Road_Intersection_T)
@@ -675,13 +699,13 @@ public class LegoCreateLandscape : MonoBehaviour
           }
         }
       }
-
+      /*
       if (TCount[0] != -1)
         player.transform.position = new Vector3((TCount[0] * LegoData.LANDSCAPE_OBJECT_WIDTH) - 4.5f, 0f, (TCount[1] * LegoData.LANDSCAPE_OBJECT_HEIGHT) - 4.5f);
       else if (otherCount[0] != -1)
         player.transform.position = new Vector3((otherCount[0] * LegoData.LANDSCAPE_OBJECT_WIDTH) - 4.5f, 0f, (otherCount[1] * LegoData.LANDSCAPE_OBJECT_HEIGHT) - 4.5f);
       else
         player.transform.position = new Vector3(0f, 0f, 0f);
-    }
+        */
   }
 }

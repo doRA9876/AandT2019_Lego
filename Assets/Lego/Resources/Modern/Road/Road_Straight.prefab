@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3307458835231602819}
   m_Layer: 0
   m_Name: ViewSpot
-  m_TagString: Untagged
+  m_TagString: ViewSpot
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2607199470081978986}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.13, y: 0.27717018, z: -0.050498962}
+  m_LocalPosition: {x: -4.31, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8424320743763017383}
