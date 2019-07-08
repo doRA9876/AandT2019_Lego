@@ -39,7 +39,7 @@ public class ViewSpot : MonoBehaviour
     FindArroundNext();
     UpdateArrow();
   }
-  
+
   public void Move(Vector2Int v2)
   {
     Move(v2.x, v2.y);
@@ -64,24 +64,24 @@ public class ViewSpot : MonoBehaviour
   {
     nextN = FindNextViewPoint(currentPos.x, currentPos.y, 0, -1);
     nextS = FindNextViewPoint(currentPos.x, currentPos.y, 0, 1);
-    nextE = FindNextViewPoint(currentPos.x, currentPos.y, 1, 0);
-    nextW = FindNextViewPoint(currentPos.x, currentPos.y, -1, 0);
+    nextE = FindNextViewPoint(currentPos.x, currentPos.y, -1, 0);
+    nextW = FindNextViewPoint(currentPos.x, currentPos.y, 1, 0);
 
     Vector2Int FindNextViewPoint(int x, int y, int dx, int dy)
     {
-      if(x + dx >= LegoData.LANDSCAPE_MAP_WIDTH || y + dy >= LegoData.LANDSCAPE_MAP_HEIGHT)
+      if (x + dx < 0 || LegoData.LANDSCAPE_MAP_WIDTH <= x + dx || y + dy < 0 || LegoData.LANDSCAPE_MAP_HEIGHT <= y + dy)
         return EXCEPT_POS;
-      
-      if(viewSpots[x + dx, y + dy] != null) 
+
+      if (viewSpots[x + dx, y + dy] != null)
         return new Vector2Int(x + dx, y + dy);
       else
-        return FindNextViewPoint(x, y, dx, dy);
+        return FindNextViewPoint(x + dx, y + dy, dx, dy);
     }
   }
 
   void UpdateArrow()
   {
-    if(nextN == EXCEPT_POS) arrowN.SetActive(false);
+    if (nextN == EXCEPT_POS) arrowN.SetActive(false);
     else arrowN.SetActive(true);
 
     if(nextS == EXCEPT_POS) arrowS.SetActive(false);
@@ -94,21 +94,11 @@ public class ViewSpot : MonoBehaviour
     else arrowW.SetActive(true);
   }
 
-  public void MoveN()
+  public void TouchedArrow(string arrowName)
   {
-    Move(nextN);
-  }
-
-  public void MoveS()
-  {
-    Move(nextS);
-  }
-  public void MoveE()
-  {
-    Move(nextE);
-  }
-  public void MoveW()
-  {
-    Move(nextW);
+    if (arrowName == "Arrow_North") Move(nextN);
+    if (arrowName == "Arrow_South") Move(nextS);
+    if (arrowName == "Arrow_East") Move(nextE);
+    if (arrowName == "Arrow_West") Move(nextW);
   }
 }
