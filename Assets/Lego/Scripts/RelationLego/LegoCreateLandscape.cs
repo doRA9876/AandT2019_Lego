@@ -312,7 +312,7 @@ public class LegoCreateLandscape : MonoBehaviour
 
             case LandscapeType_OverView.Nature:
               landscapeLegoMap_[x, y].detail = SetNatureDetails(landscapeLegoMap_[x, y]);
-              landscapeLegoMap_[x, y].direction = Direction.North;
+              landscapeLegoMap_[x, y].direction = SetNatureDirection(landscapeLegoMap_[x, y]);
               break;
 
             case LandscapeType_OverView.Road:
@@ -476,6 +476,22 @@ public class LegoCreateLandscape : MonoBehaviour
       return LandscapeType_Details.Forest;
   }
 
+  Direction SetNatureDirection(LandscapeLegoInfo landscapeLegoMap)
+  {
+        if (landscapeLegoMap.detail == LandscapeType_Details.Forest)//Forestは全て北向き
+            return Direction.North;
+        else if (landscapeLegoMap.north == LandscapeType_OverView.Road)
+            return Direction.North;
+        else if (landscapeLegoMap.south == LandscapeType_OverView.Road)
+            return Direction.South;
+        else if (landscapeLegoMap.east == LandscapeType_OverView.Road)
+            return Direction.East;
+        else if (landscapeLegoMap.west == LandscapeType_OverView.Road)
+            return Direction.West;
+        else
+            return Direction.North;
+    }
+
   LandscapeType_Details SetRoadDetails(LandscapeLegoInfo landscapeLegoMap)
   {
     if ((landscapeLegoMap.north == LandscapeType_OverView.Water && landscapeLegoMap.south == LandscapeType_OverView.Water) || (landscapeLegoMap.east == LandscapeType_OverView.Water
@@ -632,13 +648,17 @@ public class LegoCreateLandscape : MonoBehaviour
 
     void SetBuildingFrontRoad(int[] d, int x, int y)
     {
-       if (d[0] == 1 && landscapeLegoMap_[x, y + 1].overView == LandscapeType_OverView.Building && landscapeLegoMap_[x, y + 1].direction == Direction.North)
+       if (d[0] == 1 && (landscapeLegoMap_[x, y + 1].overView == LandscapeType_OverView.Building || landscapeLegoMap_[x, y + 1].detail == LandscapeType_Details.Park) 
+           && landscapeLegoMap_[x, y + 1].direction == Direction.North)
          landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
-       else if (d[1] == 1 && landscapeLegoMap_[x, y - 1].overView == LandscapeType_OverView.Building && landscapeLegoMap_[x, y - 1].direction == Direction.South)
+       else if (d[1] == 1 && (landscapeLegoMap_[x, y - 1].overView == LandscapeType_OverView.Building || landscapeLegoMap_[x, y - 1].detail == LandscapeType_Details.Park) 
+                && landscapeLegoMap_[x, y - 1].direction == Direction.South)
          landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
-       else if (d[2] == 1 && landscapeLegoMap_[x - 1, y].overView == LandscapeType_OverView.Building && landscapeLegoMap_[x - 1, y].direction == Direction.East)
+       else if (d[2] == 1 && (landscapeLegoMap_[x - 1, y].overView == LandscapeType_OverView.Building || landscapeLegoMap_[x + 1, y].detail == LandscapeType_Details.Park) 
+                && landscapeLegoMap_[x - 1, y].direction == Direction.East)
          landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
-       else if (d[3] == 1 && landscapeLegoMap_[x + 1, y].overView == LandscapeType_OverView.Building && landscapeLegoMap_[x + 1, y].direction == Direction.West)
+       else if (d[3] == 1 && (landscapeLegoMap_[x + 1, y].overView == LandscapeType_OverView.Building || landscapeLegoMap_[x - 1, y].detail == LandscapeType_Details.Park) 
+                && landscapeLegoMap_[x + 1, y].direction == Direction.West)
          landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
        else
          landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Underpass;
