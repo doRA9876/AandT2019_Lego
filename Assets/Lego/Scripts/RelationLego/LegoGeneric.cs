@@ -125,12 +125,12 @@ public static class LegoGeneric
     {
       hsv.s = 255 * (max - min) / max;
 
-      //黒用の判別
-      if ((Mathf.Abs(max - min) < 30 && max < 50) || max == min)
+      //白用の判別
+      if ((Mathf.Abs(max - min) < 30 && 250 < max) || max == min)
       {
-        hsv.h = 0;
-        hsv.s = 0;
-        hsv.v = 0;
+        hsv.h = 255;
+        hsv.s = 255;
+        hsv.v = 255;
       }
       else
       {

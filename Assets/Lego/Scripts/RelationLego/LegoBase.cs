@@ -30,6 +30,7 @@ public class LegoBase : MonoBehaviour
   private LegoBlockInfo[,] currentLandscapeMap_ = new LegoBlockInfo[LegoData.LANDSCAPE_MAP_WIDTH, LegoData.LANDSCAPE_MAP_HEIGHT];
   private static readonly int MAX_CREATE_NUM = 60;
   private float timeLeft__1FPS_, timeLeft__15FPS_;
+  private AudioSource audioSource;
   #endregion
 
   protected void Start()
@@ -44,6 +45,9 @@ public class LegoBase : MonoBehaviour
     timeLeft__1FPS_ = 1.0f;
 
     legoCreateTex_ = gameObject.GetComponent<LegoCreateTex>();
+
+    audioSource = GetComponent<AudioSource>();
+    audioSource.PlayOneShot(audioSource.clip);
   }
 
   void Update()
@@ -170,19 +174,22 @@ public class LegoBase : MonoBehaviour
       HSV hsv = LegoGeneric.RGB2HSV(c);
 
       /*
-      if (hsv.h == 0 && hsv.v == 0) return LegoColor.Black;
+      if (hsv.h == 255 && hsv.v == 255) return LegoColor.White;
       if (225 <= hsv.h && hsv.h < 255) return LegoColor.Blue; //base : 240
       if (hsv.h < 15 || 345 <= hsv.h) return LegoColor.Red;   //base : 0
       if (75 <= hsv.h && hsv.h < 105) return LegoColor.Green; //base : 90
       */
+
+
       /*
-      if (hsv.h == 0 && hsv.v == 0) return LegoColor.Black;
+      if (hsv.h == 255 && hsv.v == 255) return LegoColor.White;
       if (165 <= hsv.h && hsv.h < 300) return LegoColor.Blue; //base : 240
       if (hsv.h < 45 || 300 <= hsv.h) return LegoColor.Red;   //base : 0
       if (45 <= hsv.h && hsv.h < 165) return LegoColor.Green; //base : 90
-
-      return LegoColor.None;
       */
+
+      //return LegoColor.None;
+
       LegoColor max = LegoGeneric.Max_rgb(c);
       if (c.r > 0.555f && c.g > 0.55f && c.b > 0.55f) return LegoColor.White;
       else return max;
