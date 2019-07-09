@@ -201,7 +201,7 @@ public class LegoCreateLandscape : MonoBehaviour
   private string SaveDataName = "";
 
   private LandscapeLegoInfo[,] landscapeLegoMap_ = new LandscapeLegoInfo[LegoData.LANDSCAPE_MAP_WIDTH, LegoData.LANDSCAPE_MAP_HEIGHT];
-  private LandscapeLegoInfo[,] roadMap = new LandscapeLegoInfo[LegoData.LANDSCAPE_MAP_WIDTH, LegoData.LANDSCAPE_MAP_HEIGHT];//ロードマップ
+  //private LandscapeLegoInfo[,] roadMap = new LandscapeLegoInfo[LegoData.LANDSCAPE_MAP_WIDTH, LegoData.LANDSCAPE_MAP_HEIGHT];//ロードマップ
   private LegoCreateTex legoCreateTex_;
 
   void Start()
@@ -251,7 +251,6 @@ public class LegoCreateLandscape : MonoBehaviour
 
         landscapeLegoMap_[x, y].height = legoBlockMap[x, y].height;
         if (x == 0 || y == 0)
-
         {
           if (x == 0 && y == 0) continue;
           else if (x == 0) landscapeLegoMap_[x, y].north = landscapeLegoMap_[x, y - 1].overView;
@@ -267,8 +266,6 @@ public class LegoCreateLandscape : MonoBehaviour
       }
     }
   }
-
-
 
   /// <summary>
   /// 景観作成
@@ -307,11 +304,11 @@ public class LegoCreateLandscape : MonoBehaviour
               landscapeLegoMap_[x, y].direction = SetBuildingDirection(landscapeLegoMap_[x, y]);
               break;
 
-            case LandscapeType_OverView.Water:
+            /*case LandscapeType_OverView.Water:
               landscapeLegoMap_[x, y].detail = SetWaterDetails(landscapeLegoMap_[x, y]);
               SetSeaDetails(x, y);
               landscapeLegoMap_[x, y].direction = SetWaterDirection(landscapeLegoMap_[x, y]);
-              break;
+              break;*/
 
             case LandscapeType_OverView.Nature:
               landscapeLegoMap_[x, y].detail = SetNatureDetails(landscapeLegoMap_[x, y]);
@@ -331,6 +328,12 @@ public class LegoCreateLandscape : MonoBehaviour
             default:
               break;
           }
+        }
+        else
+        {
+          landscapeLegoMap_[x, y].overView = LandscapeType_OverView.Spaces;
+          landscapeLegoMap_[x, y].detail = LandscapeType_Details.Space;
+          landscapeLegoMap_[x, y].direction = Direction.North;
         }
 
         if (landscapeLegoMap_[x, y].overView != LandscapeType_OverView.Spaces)
@@ -380,20 +383,22 @@ public class LegoCreateLandscape : MonoBehaviour
     if (landscapeLegoMap.west == LandscapeType_OverView.Water)
       Count++;
 
-    if (Count == 0)//東西南北のWaterの数で種類を判定
-      return LandscapeType_Details.Pond;
-    else if (Count == 1)
-      return LandscapeType_Details.River_Straight;
-    else if (Count == 2)
-    {
-      if ((landscapeLegoMap.north == LandscapeType_OverView.Water && landscapeLegoMap.south == LandscapeType_OverView.Water)
-          || (landscapeLegoMap.east == LandscapeType_OverView.Water && landscapeLegoMap.west == LandscapeType_OverView.Water))
-        return LandscapeType_Details.River_Straight;
-      else
-        return LandscapeType_Details.River_Curve;
-    }
-    else if (Count == 3)
-      return LandscapeType_Details.River_Intersection_T;
+        if (Count == 0)//東西南北のWaterの数で種類を判定
+            return LandscapeType_Details.Pond;
+        else if (Count == 1)
+            return LandscapeType_Details.River_Straight;
+        else if (Count == 2)
+        {
+            if ((landscapeLegoMap.north == LandscapeType_OverView.Water && landscapeLegoMap.south == LandscapeType_OverView.Water)
+                || (landscapeLegoMap.east == LandscapeType_OverView.Water && landscapeLegoMap.west == LandscapeType_OverView.Water))
+                return LandscapeType_Details.River_Straight;
+            else
+                return LandscapeType_Details.River_Curve;
+        }
+        else if (Count == 3)
+            return LandscapeType_Details.River_Intersection_T;
+        else if (Count == 4)
+            return LandscapeType_Details.River_Straight;
 
     return LandscapeType_Details.Space;
   }
@@ -567,17 +572,17 @@ public class LegoCreateLandscape : MonoBehaviour
         return;
       }
 
-      int NorthCount = 0, SouthCount = 0, EastCount = 0, WestCount = 0;
+      int[] DirectionCount = new int[4] { 0, 0, 0, 0 };
       if (landscapeLegoMap_[x, y].north == LandscapeType_OverView.Road)
-        NorthCount++;
+        DirectionCount[0]++;
       else if (landscapeLegoMap_[x, y].south == LandscapeType_OverView.Road)
-        SouthCount++;
+        DirectionCount[1]++;
       else if (landscapeLegoMap_[x, y].east == LandscapeType_OverView.Road)
-        EastCount++;
+        DirectionCount[2]++;
       else if (landscapeLegoMap_[x, y].west == LandscapeType_OverView.Road)
-        WestCount++;
+        DirectionCount[3]++;
 
-      if (NorthCount == 1 && landscapeLegoMap_[x, y + 1].detail == LandscapeType_Details.Space)
+      if (DirectionCount[0] == 1 && landscapeLegoMap_[x, y + 1].detail == LandscapeType_Details.Space)
       {
         landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Straight;
 
@@ -588,7 +593,7 @@ public class LegoCreateLandscape : MonoBehaviour
 
         CreateRoad_StopAfter(x, y + 1);
       }
-      else if (SouthCount == 1 && landscapeLegoMap_[x, y - 1].detail == LandscapeType_Details.Space)
+      else if (DirectionCount[1] == 1 && landscapeLegoMap_[x, y - 1].detail == LandscapeType_Details.Space)
       {
         landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Straight;
 
@@ -599,7 +604,7 @@ public class LegoCreateLandscape : MonoBehaviour
 
         CreateRoad_StopAfter(x, y - 1);
       }
-      else if (EastCount == 1 && landscapeLegoMap_[x - 1, y].detail == LandscapeType_Details.Space)
+      else if (DirectionCount[2] == 1 && landscapeLegoMap_[x - 1, y].detail == LandscapeType_Details.Space)
       {
         landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Straight;
 
@@ -610,7 +615,7 @@ public class LegoCreateLandscape : MonoBehaviour
 
         CreateRoad_StopAfter(x - 1, y);
       }
-      else if (WestCount == 1 && landscapeLegoMap_[x + 1, y].detail == LandscapeType_Details.Space)
+      else if (DirectionCount[3] == 1 && landscapeLegoMap_[x + 1, y].detail == LandscapeType_Details.Space)
       {
         landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Straight;
 
@@ -621,6 +626,22 @@ public class LegoCreateLandscape : MonoBehaviour
 
         CreateRoad_StopAfter(x + 1, y);
       }
+      else
+        SetBuildingFrontRoad(DirectionCount, x, y);
+    }
+
+    void SetBuildingFrontRoad(int[] d, int x, int y)
+    {
+       if (d[0] == 1 && landscapeLegoMap_[x, y + 1].overView == LandscapeType_OverView.Building && landscapeLegoMap_[x, y + 1].direction == Direction.North)
+         landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
+       else if (d[1] == 1 && landscapeLegoMap_[x, y - 1].overView == LandscapeType_OverView.Building && landscapeLegoMap_[x, y - 1].direction == Direction.South)
+         landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
+       else if (d[2] == 1 && landscapeLegoMap_[x - 1, y].overView == LandscapeType_OverView.Building && landscapeLegoMap_[x - 1, y].direction == Direction.East)
+         landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
+       else if (d[3] == 1 && landscapeLegoMap_[x + 1, y].overView == LandscapeType_OverView.Building && landscapeLegoMap_[x + 1, y].direction == Direction.West)
+         landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
+       else
+         landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Underpass;
     }
   }
 
@@ -635,7 +656,7 @@ public class LegoCreateLandscape : MonoBehaviour
         GameObject obj = landscapeLegoMap_[x, y].GetLegoObject();
         if (obj == null)
         {
-          Debug.LogError(landscapeLegoMap_[x, y].detail + "is not exist.");
+          Debug.LogError(landscapeLegoMap_[x, y].detail + " is not exist.");
           obj = LegoObjects.space;
         }
         float rotationAngle;
