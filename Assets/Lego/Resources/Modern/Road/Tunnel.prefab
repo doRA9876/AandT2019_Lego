@@ -40,7 +40,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228063676213243188}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.3
@@ -72,7 +72,6 @@ GameObject:
   - component: {fileID: 3642987333875492945}
   - component: {fileID: 5142733681180728543}
   - component: {fileID: 6959378918656505314}
-  - component: {fileID: 4429294567849713829}
   m_Layer: 0
   m_Name: SideWall1
   m_TagString: Untagged
@@ -139,19 +138,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &4429294567849713829
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 968776558935540558}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1926331809396544686
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +179,6 @@ GameObject:
   - component: {fileID: 4322795348827049646}
   - component: {fileID: 1974793949455985102}
   - component: {fileID: 250787723421449636}
-  - component: {fileID: 3807492099309704937}
   m_Layer: 0
   m_Name: Superstructure2
   m_TagString: Untagged
@@ -240,7 +225,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 21ac23767fac0be488f0073a250a9bf5, type: 2}
+  - {fileID: 2100000, guid: 0cdb6b8157250254a8835796a22c9bc7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -260,19 +245,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &3807492099309704937
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3754756471750607113}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3771949811615557528
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +256,6 @@ GameObject:
   - component: {fileID: 8633334542134417999}
   - component: {fileID: 2477914555062763355}
   - component: {fileID: 5705845637474848168}
-  - component: {fileID: 7218256517027348023}
   m_Layer: 0
   m_Name: Ceiling1
   m_TagString: Untagged
@@ -351,19 +322,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &7218256517027348023
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3771949811615557528}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4006732091651631799
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,7 +468,7 @@ GameObject:
   - component: {fileID: 2712941314723200640}
   m_Layer: 0
   m_Name: Waypoint21
-  m_TagString: Untagged
+  m_TagString: CarGenerator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -537,11 +495,11 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5460828005304881763}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.73845404
+  m_Center: {x: 0.43845397, y: 0, z: 0}
 --- !u!114 &3781196174703091335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,7 +539,6 @@ GameObject:
   - component: {fileID: 3608107230485406619}
   - component: {fileID: 6007820709146288801}
   - component: {fileID: 883026891916938095}
-  - component: {fileID: 5217615667989197064}
   m_Layer: 0
   m_Name: Ceiling2
   m_TagString: Untagged
@@ -648,18 +605,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5217615667989197064
+--- !u!65 &792743035575895852
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6767453428723060433}
+  m_GameObject: {fileID: 6769936755112293419}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 10, y: 2.220446e-16, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7325167226874980617
 GameObject:
@@ -702,7 +659,6 @@ GameObject:
   - component: {fileID: 739192428411788411}
   - component: {fileID: 3635441839518226716}
   - component: {fileID: 7914560284076913696}
-  - component: {fileID: 213267438211698593}
   m_Layer: 0
   m_Name: Superstructure1
   m_TagString: Untagged
@@ -769,19 +725,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &213267438211698593
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7995893502674373825}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8042484477735681777
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,7 +736,6 @@ GameObject:
   - component: {fileID: 8799403012573507397}
   - component: {fileID: 2723572984878088653}
   - component: {fileID: 1123883731915790589}
-  - component: {fileID: 8376291169775860499}
   m_Layer: 0
   m_Name: SideWall2
   m_TagString: Untagged
@@ -860,19 +802,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &8376291169775860499
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8042484477735681777}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8236430095575137645
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,7 +813,6 @@ GameObject:
   - component: {fileID: 1154118670215009467}
   - component: {fileID: 5292013267913286289}
   - component: {fileID: 6237745063113425008}
-  - component: {fileID: 4607961454365367618}
   m_Layer: 0
   m_Name: Plate
   m_TagString: Untagged
@@ -951,19 +879,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &4607961454365367618
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8236430095575137645}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2437757008156181361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1031,7 +946,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6417348, guid: 299cc5f1467e27844bdb38db8e09606d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 299cc5f1467e27844bdb38db8e09606d, type: 3}
 --- !u!4 &2437757008155868061 stripped
 Transform:
@@ -1106,8 +1022,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7444069295202628095, guid: 24b96208e3b15ac4491cc88d3eed4660, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 24b96208e3b15ac4491cc88d3eed4660, type: 3}
+--- !u!1 &6769936755112293419 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 32014906376756879, guid: 24b96208e3b15ac4491cc88d3eed4660,
+    type: 3}
+  m_PrefabInstance: {fileID: 6737975477913168548}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2520696553090614723 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9185453005867724647, guid: 24b96208e3b15ac4491cc88d3eed4660,
@@ -1181,7 +1104,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6417348, guid: 299cc5f1467e27844bdb38db8e09606d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 299cc5f1467e27844bdb38db8e09606d, type: 3}
 --- !u!4 &7990526063660378280 stripped
 Transform:

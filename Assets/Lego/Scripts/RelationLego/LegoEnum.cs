@@ -22,7 +22,7 @@
     House, Shop, Skyscraper,                                                                    //Building
     River_Straight, River_Curve, River_Intersection_T, River_Intersection_X, Sea, Pond,                                        //Water
     Forest, Park,                                                                                 //Nature
-    Road_Straight, Road_Curve, Road_Intersection_T, Road_Intersection_X, Road_Stop, Road_CrossWalk, Bridge,   //Road
+    Road_Straight, Road_Curve, Road_Intersection_T, Road_Intersection_X, Road_Stop, Road_CrossWalk, Bridge, Road_Underpass, Road_Tunnel,   //Road
     Space                                                                                                     //Spaces
   }
   public enum Direction
