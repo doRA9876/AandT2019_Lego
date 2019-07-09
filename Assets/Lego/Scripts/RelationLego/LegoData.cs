@@ -105,7 +105,7 @@ public static class LegoData
   public static readonly float MAX_DEPTH_NUM = 3975f;
   public static readonly int BUILDING_HIERARCHY_NUM = 6;
   public static readonly string SAVE_FILE_PATH = "/Lego/SaveData/";
-  public static readonly float CAR_SPEED = 1.5f;
+  public static readonly float CAR_SPEED = 3f;
   #endregion
 
   public static bool isCalibrated = false;

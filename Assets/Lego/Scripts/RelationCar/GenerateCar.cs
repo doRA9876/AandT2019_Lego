@@ -15,20 +15,6 @@ public class GenerateCar : MonoBehaviour
     car_Sedan = (GameObject)Resources.Load("Car/Car_Sedan");
   }
 
-  void Update()
-  {
-    /*
-    elapsedTime += Time.deltaTime;
-
-    if(elapsedTime > nextGenerateTiming)
-    {
-      elapsedTime = 0;
-      nextGenerateTiming = Random.Range(5f, 10f);
-      ExecuteGeneration();
-    }
-    */
-  }
-
   public void ExecuteGeneration()
   {
     int random = Random.Range(0, 3);
