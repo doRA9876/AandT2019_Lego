@@ -78,6 +78,12 @@ public static class LegoObjects
     building_severalFloors1_4 = (GameObject)Resources.Load("Modern/Building/FloorsType1_4");
     building_severalFloors1_5 = (GameObject)Resources.Load("Modern/Building/FloorsType1_5");
 
+    building_severalFloors2_1 = (GameObject)Resources.Load("Modern/Building/FloorsType2_1");
+    building_severalFloors2_2 = (GameObject)Resources.Load("Modern/Building/FloorsType2_2");
+    building_severalFloors2_3 = (GameObject)Resources.Load("Modern/Building/FloorsType2_3");
+    building_severalFloors2_4 = (GameObject)Resources.Load("Modern/Building/FloorsType2_4");
+    building_severalFloors2_5 = (GameObject)Resources.Load("Modern/Building/FloorsType2_5");
+
     skyscraper = (GameObject)Resources.Load("Modern/Building/skyscraper");
 
     //Middle

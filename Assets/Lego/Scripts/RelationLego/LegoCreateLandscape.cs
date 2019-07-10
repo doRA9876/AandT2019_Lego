@@ -134,7 +134,7 @@ class LandscapeLegoInfo
 
     GameObject GetRandomSeveralFloors2()
     {
-            int randomNum = Random.Range(0, 6);
+            int randomNum = Random.Range(0, 5);
 
             switch (randomNum)
             {
@@ -160,7 +160,7 @@ class LandscapeLegoInfo
 
     GameObject GetRandomSeveralFloors3()
     {
-            int randomNum = Random.Range(0, 6);
+            int randomNum = Random.Range(0, 5);
 
             switch (randomNum)
             {
