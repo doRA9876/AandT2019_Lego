@@ -6,6 +6,8 @@ TagManager:
   tags:
   - CarGenerator
   - ViewSpot
+  - Building
+  - Road
   layers:
   - Default
   - TransparentFX

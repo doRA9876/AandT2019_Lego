@@ -391,6 +391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8791576520353346155}
   - component: {fileID: 7348601178307272824}
+  - component: {fileID: 9119842321714513765}
   m_Layer: 0
   m_Name: Waypoint13
   m_TagString: Untagged
@@ -424,6 +425,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ef0d73ca9c2c74c8081b01caf2467c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &9119842321714513765
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4014222002236376750}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5436108785506323379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,15 +1039,15 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7444069295202628095, guid: 24b96208e3b15ac4491cc88d3eed4660, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 24b96208e3b15ac4491cc88d3eed4660, type: 3}
---- !u!1 &6769936755112293419 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 32014906376756879, guid: 24b96208e3b15ac4491cc88d3eed4660,
-    type: 3}
-  m_PrefabInstance: {fileID: 6737975477913168548}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2520696553090614723 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9185453005867724647, guid: 24b96208e3b15ac4491cc88d3eed4660,
+    type: 3}
+  m_PrefabInstance: {fileID: 6737975477913168548}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6769936755112293419 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 32014906376756879, guid: 24b96208e3b15ac4491cc88d3eed4660,
     type: 3}
   m_PrefabInstance: {fileID: 6737975477913168548}
   m_PrefabAsset: {fileID: 0}

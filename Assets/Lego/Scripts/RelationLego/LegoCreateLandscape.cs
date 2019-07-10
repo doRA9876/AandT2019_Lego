@@ -637,6 +637,7 @@ public class LegoCreateLandscape : MonoBehaviour
   void CreateLandscape()
   {
     LegoObjects.LoadGameObjects();
+    GameObject NewObj;
 
     for (int y = 0; y < LegoData.LANDSCAPE_MAP_HEIGHT; y++)
     {
@@ -672,7 +673,19 @@ public class LegoCreateLandscape : MonoBehaviour
             break;
         }
 
-        Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, 0f, y * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
+        if (landscapeLegoMap_[x, y].overView == LandscapeType_OverView.Building)
+        {
+            NewObj = Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, 50f, y * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
+            NewObj.tag = "Building";
+        }
+        /*else if (landscapeLegoMap_[x, y].overView == LandscapeType_OverView.Road && (landscapeLegoMap_[x, y].detail != LandscapeType_Details.Bridge 
+                 && landscapeLegoMap_[x, y].detail != LandscapeType_Details.Road_Tunnel && landscapeLegoMap_[x, y].detail != LandscapeType_Details.Road_Underpass))
+        {
+            NewObj = Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, 50f, y * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
+            NewObj.tag = "Road";
+        }*/
+        else
+            Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, 0f, y * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
       }
     }
   }
