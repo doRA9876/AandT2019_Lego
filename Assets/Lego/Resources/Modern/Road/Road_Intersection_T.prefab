@@ -152,6 +152,36 @@ MonoBehaviour:
   wayPoint1: {fileID: 1305815837272423203}
   wayPoint2: {fileID: 5209754431409906752}
   wayPoint3: {fileID: 2094991140568467153}
+--- !u!1 &2411264504024930422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7873785569009238446}
+  m_Layer: 0
+  m_Name: ViewSpot
+  m_TagString: ViewSpot
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7873785569009238446
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2411264504024930422}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 3.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8682839852424398741}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2555015839064327640
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,6 +281,7 @@ Transform:
   - {fileID: 1305815837272423203}
   - {fileID: 5209754431409906752}
   - {fileID: 2094991140568467153}
+  - {fileID: 7873785569009238446}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

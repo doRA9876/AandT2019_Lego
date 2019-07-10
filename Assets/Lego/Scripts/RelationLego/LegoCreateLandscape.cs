@@ -13,7 +13,6 @@ class LandscapeLegoInfo
   public LandscapeType_Details detail;
   public int height;
   public Direction direction;
-  private Age age;
 
   public LandscapeLegoInfo()
   {
@@ -27,7 +26,6 @@ class LandscapeLegoInfo
     north = south = east = west = LandscapeType_OverView.Spaces;
     direction = Direction.North;
     height = 0;
-    age = Age.Modern;
   }
 
   void SetLegoType_OverView(LegoColor legoColor)
@@ -89,27 +87,16 @@ class LandscapeLegoInfo
 
     GameObject GetBuildingObject()
     {
-      switch (this.age)
+      switch (this.detail)
       {
-        case Age.Modern:
-          switch (this.detail)
-          {
-            case LandscapeType_Details.House:
-              return LegoObjects.modern_building_1;
+        case LandscapeType_Details.House:
+          return LegoObjects.modern_building_1;
 
-            case LandscapeType_Details.Shop:
-              return LegoObjects.modern_building_2;
+        case LandscapeType_Details.Shop:
+          return LegoObjects.modern_building_2;
 
-            case LandscapeType_Details.Skyscraper:
-              return LegoObjects.eiffelTower;
-
-            default:
-              return LegoObjects.space;
-          }
-
-        case Age.Middle:
-
-        case Age.Fantasy:
+        case LandscapeType_Details.Skyscraper:
+          return LegoObjects.eiffelTower;
 
         default:
           return LegoObjects.space;
@@ -230,7 +217,9 @@ public class LegoCreateLandscape : MonoBehaviour
     CreateLandscape();
 
     if (isPlayable)
+    {
       SetStartPlayerPosition();
+    }
   }
 
   void ConvertLegoBlockInfo2LandscapeInfo(LegoBlockInfo[,] legoBlockMap)
@@ -668,6 +657,7 @@ public class LegoCreateLandscape : MonoBehaviour
   void CreateLandscape()
   {
     LegoObjects.LoadGameObjects();
+    GameObject NewObj;
 
     for (int y = 0; y < LegoData.LANDSCAPE_MAP_HEIGHT; y++)
     {
@@ -703,17 +693,50 @@ public class LegoCreateLandscape : MonoBehaviour
             break;
         }
 
-        Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, 0f, y * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
+        if (landscapeLegoMap_[x, y].overView == LandscapeType_OverView.Building)
+        {
+            NewObj = Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, 100f, y * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
+            NewObj.tag = "Building";
+        }
+        /*else if (landscapeLegoMap_[x, y].overView == LandscapeType_OverView.Road && (landscapeLegoMap_[x, y].detail != LandscapeType_Details.Bridge 
+                 && landscapeLegoMap_[x, y].detail != LandscapeType_Details.Road_Tunnel && landscapeLegoMap_[x, y].detail != LandscapeType_Details.Road_Underpass))
+        {
+            NewObj = Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, 50f, y * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
+            NewObj.tag = "Road";
+        }*/
+        else
+            Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, 0f, y * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
       }
     }
   }
 
   void SetStartPlayerPosition()//プレイヤーの初期位置を決める
   {
-    GameObject player = GameObject.Find("[CameraRig]");
-
+    ViewSpot spotScript = gameObject.GetComponent<ViewSpot>();
+    spotScript.Init();
     MovePosition();
 
+    void MovePosition()//配置場所の優先順位:Road_Intersection_X > Road_Intersection_T > otherRoadDetails > Center: 優先順位の高いdetailが無ければ次の優先順位のdetailに配置する
+    {
+      for (int y = 0; y < LegoData.LANDSCAPE_MAP_HEIGHT; y++)
+      {
+        for (int x = 0; x < LegoData.LANDSCAPE_MAP_WIDTH; x++)
+        {
+          if (landscapeLegoMap_[x, y].detail == LandscapeType_Details.Road_Intersection_X)
+          {
+            spotScript.Move(x, y);
+            return;
+          }
+          else if (landscapeLegoMap_[x, y].detail == LandscapeType_Details.Road_Intersection_T)
+          {
+            spotScript.Move(x, y);
+            return;
+          }
+        }
+      }
+      spotScript.MoveRandom();
+    }
+    /*
     void MovePosition()//配置場所の優先順位:Road_Intersection_X > Road_Intersection_T > otherRoadDetails > Center: 優先順位の高いdetailが無ければ次の優先順位のdetailに配置する
     {
       int[] TCount = new int[2] { -1, -1 }, otherCount = new int[2] { -1, -1 };
@@ -723,7 +746,8 @@ public class LegoCreateLandscape : MonoBehaviour
         {
           if (landscapeLegoMap_[x, y].detail == LandscapeType_Details.Road_Intersection_X)
           {
-            player.transform.position = new Vector3((x * LegoData.LANDSCAPE_OBJECT_WIDTH) - 4.5f, 0f, (y * LegoData.LANDSCAPE_OBJECT_HEIGHT) - 4.5f);
+            //player.transform.position = new Vector3((x * LegoData.LANDSCAPE_OBJECT_WIDTH) - 4.5f, 0f, (y * LegoData.LANDSCAPE_OBJECT_HEIGHT) - 4.5f);
+            spotScript.MovePosition(x, y);
             return;
           }
           else if (landscapeLegoMap_[x, y].detail == LandscapeType_Details.Road_Intersection_T)
@@ -738,13 +762,13 @@ public class LegoCreateLandscape : MonoBehaviour
           }
         }
       }
-
+      /*
       if (TCount[0] != -1)
         player.transform.position = new Vector3((TCount[0] * LegoData.LANDSCAPE_OBJECT_WIDTH) - 4.5f, 0f, (TCount[1] * LegoData.LANDSCAPE_OBJECT_HEIGHT) - 4.5f);
       else if (otherCount[0] != -1)
         player.transform.position = new Vector3((otherCount[0] * LegoData.LANDSCAPE_OBJECT_WIDTH) - 4.5f, 0f, (otherCount[1] * LegoData.LANDSCAPE_OBJECT_HEIGHT) - 4.5f);
       else
         player.transform.position = new Vector3(0f, 0f, 0f);
-    }
+        */
   }
 }

@@ -436,7 +436,12 @@ internal class LegoRiverMap
             }
             riverMap[x, y].direction = direction;
             break;
-          
+
+          case 0b1111:
+            riverMap[x, y].detail = LandscapeType_Details.River_Intersection_X;
+            direction = Direction.North;
+            break;
+
           case 0b0000:
             riverMap[x, y].detail = LandscapeType_Details.Pond;
             riverMap[x, y].direction = Direction.North;
