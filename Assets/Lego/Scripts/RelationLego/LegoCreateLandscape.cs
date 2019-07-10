@@ -90,7 +90,7 @@ class LandscapeLegoInfo
       switch (this.detail)
       {
         case LandscapeType_Details.House:
-          return LegoObjects.building_house;
+          return GetRandomHouse();
 
         case LandscapeType_Details.SeveralFloors:
           return LegoObjects.building_severalFloors;
@@ -101,6 +101,32 @@ class LandscapeLegoInfo
         default:
           return LegoObjects.space;
       }
+    }
+
+    GameObject GetRandomHouse()
+    {
+        int randomNum = Random.Range(0, 5);
+
+        switch (randomNum)
+        {
+                case 0:
+                    return LegoObjects.building_house1;
+
+                case 1:
+                    return LegoObjects.building_house2;
+
+                case 2:
+                    return LegoObjects.building_house3;
+
+                case 3:
+                    return LegoObjects.building_house4;
+
+                case 4:
+                    return LegoObjects.building_house5;
+
+                default:
+                    return LegoObjects.space;
+        }
     }
 
     GameObject GetRoadObject()
@@ -656,6 +682,7 @@ public class LegoCreateLandscape : MonoBehaviour
 
   void CreateLandscape()
   {
+    //int randomNum = Random.Range(0, 5);
     LegoObjects.LoadGameObjects();
     GameObject NewObj;
 
@@ -695,7 +722,7 @@ public class LegoCreateLandscape : MonoBehaviour
 
         if (landscapeLegoMap_[x, y].overView == LandscapeType_OverView.Building)
         {
-            NewObj = Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, 100f, y * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
+            NewObj = Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, /*10*/0f, y * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
             NewObj.tag = "Building";
         }
         else

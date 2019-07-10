@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public static class LegoObjects
 {
@@ -13,7 +15,12 @@ public static class LegoObjects
   public static GameObject road_straight, road_intersection_T, road_intersection_X, road_curve, road_tunnel, road_underpass, road_stop, road_crossWalk, bridge;
 
   //Building
-  public static GameObject building_house, building_severalFloors, skyscraper;
+  public static GameObject building_house1,
+                           building_house2,
+                           building_house3,
+                           building_house4,
+                           building_house5, 
+                           building_severalFloors, skyscraper;
 
   //Middle
   //public static GameObject middle_building_1;
@@ -45,10 +52,15 @@ public static class LegoObjects
     bridge = (GameObject)Resources.Load("Modern/Road/Bridge");
 
     //Building
-    RandomLoadBuildings();
-    /*building_house = (GameObject)Resources.Load("Modern/Building/Building_1");
+    //RandomLoadBuildings();
+    building_house1 = (GameObject)Resources.Load("Modern/Building/House_1");
+    building_house2 = (GameObject)Resources.Load("Modern/Building/House_2");
+    building_house3 = (GameObject)Resources.Load("Modern/Building/House_3");
+    building_house4 = (GameObject)Resources.Load("Modern/Building/House_4");
+    building_house5 = (GameObject)Resources.Load("Modern/Building/House_5");
+
     building_severalFloors = (GameObject)Resources.Load("Modern/Building/Building_2");
-    skyscraper = (GameObject)Resources.Load("Modern/Building/skyscraper");*/
+    skyscraper = (GameObject)Resources.Load("Modern/Building/skyscraper");
 
     //Middle
     //building_house = (GameObject)Resources.Load("Middle/Building/Building_1");
@@ -70,28 +82,34 @@ public static class LegoObjects
 
     isLoaded = true;
 
-    void RandomLoadBuildings()
+    /*void RandomLoadBuildings()
     {
-        int randomNum1 = Random.Range(0, 2);
-
-        switch (randomNum1)
+        switch (random)
         {
             case 0:
-                building_house = (GameObject)Resources.Load("Modern/Building/");
+                building_house = (GameObject)Resources.Load("Modern/Building/House_1");
                 break;
 
             case 1:
-                building_house = (GameObject)Resources.Load("Modern/Building/");
+                building_house = (GameObject)Resources.Load("Modern/Building/House_2");
                 break;
 
             case 2:
-                building_house = (GameObject)Resources.Load("Modern/Building/");
+                building_house = (GameObject)Resources.Load("Modern/Building/House_3");
+                break;
+
+            case 3:
+                building_house = (GameObject)Resources.Load("Modern/Building/House_4");
+                break;
+
+            case 4:
+                building_house = (GameObject)Resources.Load("Modern/Building/House_5");
                 break;
 
             default:
                 building_house = (GameObject)Resources.Load("Space/Space");
                 break;
         }
-    }
+    }*/
   }
 }
