@@ -60,6 +60,10 @@ Assets/RealSenseSDK2.0.meta
 Assets/StreamingAssets/
 Assets/StreamingAssets.meta
 
+# OpenCV
+Assets/OpenCV+Unity/
+Assets/OpenCV+Unity.meta
+
 # Sound, Image
 Assets/Lego/Sound/
 Assets/Lego/Sound.meta

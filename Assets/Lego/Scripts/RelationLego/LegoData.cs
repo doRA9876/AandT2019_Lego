@@ -96,6 +96,8 @@ public static class LegoData
   #endregion
 
   #region Constant Value
+  public static readonly int REALSENSE_DEPTH_WIDTH = 640;
+  public static readonly int REALSENSE_DEPTH_HEIGHT = 360;
   public static readonly int DEPTH_CAMERA_WIDTH = 640;
   public static readonly int DEPTH_CAMERA_HEIGHT = 480;
   public static readonly int LANDSCAPE_MAP_HEIGHT = 16;
