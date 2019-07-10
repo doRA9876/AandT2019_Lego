@@ -23,11 +23,11 @@ public class AnimateLandscape : MonoBehaviour
         /*if (updateBlocks == true)
           roadBlocks[legoNum].transform.position -= new Vector3(0f, 10f, 0f);*/
         //else
-          buildingBlocks[legoNum].transform.position -= new Vector3(0f, 5f, 0f);
+          buildingBlocks[legoNum].transform.position -= new Vector3(0f, 4f, 0f);
 
         height++;
 
-        if (height == 10f)
+        if (height == 25f)
         {
             legoNum++;
             height = 0;
