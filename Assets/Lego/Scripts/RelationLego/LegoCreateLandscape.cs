@@ -96,7 +96,10 @@ class LandscapeLegoInfo
           return GetRandomSeveralFloors2();
 
         case LandscapeType_Details.SeveralFloors3:
-            return GetRandomSeveralFloors3();
+          return GetRandomSeveralFloors3();
+
+        case LandscapeType_Details.SeveralFloors4:
+          return GetRandomSeveralFloors4();
 
         case LandscapeType_Details.Skyscraper:
           return LegoObjects.skyscraper;
@@ -183,6 +186,32 @@ class LandscapeLegoInfo
                     return LegoObjects.space;
             }
     }
+
+    GameObject GetRandomSeveralFloors4()
+    {
+            int randomNum = Random.Range(0, 5);
+
+            switch (randomNum)
+            {
+                case 0:
+                    return LegoObjects.building_severalFloors3_1;
+
+                case 1:
+                    return LegoObjects.building_severalFloors3_2;
+
+                case 2:
+                    return LegoObjects.building_severalFloors3_3;
+
+                case 3:
+                    return LegoObjects.building_severalFloors3_4;
+
+                case 4:
+                    return LegoObjects.building_severalFloors3_5;
+
+                default:
+                    return LegoObjects.space;
+            }
+        }
 
     GameObject GetRoadObject()
     {
