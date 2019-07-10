@@ -90,13 +90,13 @@ class LandscapeLegoInfo
       switch (this.detail)
       {
         case LandscapeType_Details.House:
-          return LegoObjects.modern_building_1;
+          return LegoObjects.building_house;
 
-        case LandscapeType_Details.Shop:
-          return LegoObjects.modern_building_2;
+        case LandscapeType_Details.SeveralFloors:
+          return LegoObjects.building_severalFloors;
 
         case LandscapeType_Details.Skyscraper:
-          return LegoObjects.eiffelTower;
+          return LegoObjects.skyscraper;
 
         default:
           return LegoObjects.space;
@@ -108,31 +108,31 @@ class LandscapeLegoInfo
       switch (this.detail)
       {
         case LandscapeType_Details.Road_Straight:
-          return LegoObjects.modern_road_straight;
+          return LegoObjects.road_straight;
 
         case LandscapeType_Details.Road_Curve:
-          return LegoObjects.modern_road_curve;
+          return LegoObjects.road_curve;
 
         case LandscapeType_Details.Road_Intersection_T:
-          return LegoObjects.modern_road_intersection_T;
+          return LegoObjects.road_intersection_T;
 
         case LandscapeType_Details.Road_Intersection_X:
-          return LegoObjects.modern_road_intersection_X;
+          return LegoObjects.road_intersection_X;
 
         case LandscapeType_Details.Road_Underpass:
-          return LegoObjects.modern_road_underpass;
+          return LegoObjects.road_underpass;
 
         case LandscapeType_Details.Road_Tunnel:
-          return LegoObjects.modern_road_tunnel;
+          return LegoObjects.road_tunnel;
 
         case LandscapeType_Details.Road_Stop:
-          return LegoObjects.modern_road_stop;
+          return LegoObjects.road_stop;
 
         case LandscapeType_Details.Road_CrossWalk:
-          return LegoObjects.modern_road_crossWalk;
+          return LegoObjects.road_crossWalk;
 
         case LandscapeType_Details.Bridge:
-          return LegoObjects.modern_bridge;
+          return LegoObjects.bridge;
 
         default:
           return LegoObjects.space;
@@ -338,8 +338,8 @@ public class LegoCreateLandscape : MonoBehaviour
   LandscapeType_Details SetBuildingDetails(LandscapeLegoInfo landscapeLegoMap)
   {
     if (landscapeLegoMap.height >= 2 && landscapeLegoMap.height < 5)
-      return LandscapeType_Details.Shop;
-    else if (landscapeLegoMap.height == 5)
+      return LandscapeType_Details.SeveralFloors;
+    else if (landscapeLegoMap.height >= 5)
       return LandscapeType_Details.Skyscraper;
     else
       return LandscapeType_Details.House;
@@ -359,7 +359,7 @@ public class LegoCreateLandscape : MonoBehaviour
       return Direction.North;
   }
 
-  LandscapeType_Details SetWaterDetails(LandscapeLegoInfo landscapeLegoMap)
+  /*LandscapeType_Details SetWaterDetails(LandscapeLegoInfo landscapeLegoMap)
   {
     int Count = 0;
 
@@ -445,7 +445,7 @@ public class LegoCreateLandscape : MonoBehaviour
       return Direction.West;
     else
       return Direction.North;
-  }
+  }*/
 
   LandscapeType_Details SetNatureDetails(LandscapeLegoInfo landscapeLegoMap)
   {
@@ -479,7 +479,7 @@ public class LegoCreateLandscape : MonoBehaviour
             return Direction.West;
         else
             return Direction.North;
-    }
+  }
 
   LandscapeType_Details SetRoadDetails(LandscapeLegoInfo landscapeLegoMap)
   {
@@ -698,12 +698,6 @@ public class LegoCreateLandscape : MonoBehaviour
             NewObj = Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, 100f, y * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
             NewObj.tag = "Building";
         }
-        /*else if (landscapeLegoMap_[x, y].overView == LandscapeType_OverView.Road && (landscapeLegoMap_[x, y].detail != LandscapeType_Details.Bridge 
-                 && landscapeLegoMap_[x, y].detail != LandscapeType_Details.Road_Tunnel && landscapeLegoMap_[x, y].detail != LandscapeType_Details.Road_Underpass))
-        {
-            NewObj = Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, 50f, y * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
-            NewObj.tag = "Road";
-        }*/
         else
             Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, 0f, y * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
       }
