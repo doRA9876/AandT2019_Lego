@@ -92,8 +92,11 @@ class LandscapeLegoInfo
         case LandscapeType_Details.House:
           return GetRandomHouse();
 
-        case LandscapeType_Details.SeveralFloors:
-          return GetRandomSeveralFloors();
+        case LandscapeType_Details.SeveralFloors2:
+          return GetRandomSeveralFloors2();
+
+        case LandscapeType_Details.SeveralFloors3:
+            return GetRandomSeveralFloors3();
 
         case LandscapeType_Details.Skyscraper:
           return LegoObjects.skyscraper;
@@ -129,31 +132,57 @@ class LandscapeLegoInfo
         }
     }
 
-    GameObject GetRandomSeveralFloors()
+    GameObject GetRandomSeveralFloors2()
     {
-            int randomNum = Random.Range(0, 5);
+            int randomNum = Random.Range(0, 6);
 
             switch (randomNum)
             {
                 case 0:
-                    return LegoObjects.building_severalFloors1;
+                    return LegoObjects.building_severalFloors1_1;
 
                 case 1:
-                    return LegoObjects.building_severalFloors2;
+                    return LegoObjects.building_severalFloors1_2;
 
                 case 2:
-                    return LegoObjects.building_severalFloors3;
+                    return LegoObjects.building_severalFloors1_3;
 
                 case 3:
-                    return LegoObjects.building_severalFloors4;
+                    return LegoObjects.building_severalFloors1_4;
 
                 case 4:
-                    return LegoObjects.building_severalFloors5;
+                    return LegoObjects.building_severalFloors1_5;
 
                 default:
                     return LegoObjects.space;
             }
-        }
+    }
+
+    GameObject GetRandomSeveralFloors3()
+    {
+            int randomNum = Random.Range(0, 6);
+
+            switch (randomNum)
+            {
+                case 0:
+                    return LegoObjects.building_severalFloors2_1;
+
+                case 1:
+                    return LegoObjects.building_severalFloors2_2;
+
+                case 2:
+                    return LegoObjects.building_severalFloors2_3;
+
+                case 3:
+                    return LegoObjects.building_severalFloors2_4;
+
+                case 4:
+                    return LegoObjects.building_severalFloors2_5;
+
+                default:
+                    return LegoObjects.space;
+            }
+    }
 
     GameObject GetRoadObject()
     {
@@ -389,10 +418,14 @@ public class LegoCreateLandscape : MonoBehaviour
 
   LandscapeType_Details SetBuildingDetails(LandscapeLegoInfo landscapeLegoMap)
   {
-    if (landscapeLegoMap.height >= 2 && landscapeLegoMap.height < 5)
-      return LandscapeType_Details.SeveralFloors;
+    if (landscapeLegoMap.height == 2)
+      return LandscapeType_Details.SeveralFloors2;
+    else if (landscapeLegoMap.height == 3)
+        return LandscapeType_Details.SeveralFloors3;
+    else if (landscapeLegoMap.height == 4)
+        return LandscapeType_Details.SeveralFloors4;
     else if (landscapeLegoMap.height >= 5)
-      return LandscapeType_Details.Skyscraper;
+        return LandscapeType_Details.Skyscraper;
     else
       return LandscapeType_Details.House;
   }

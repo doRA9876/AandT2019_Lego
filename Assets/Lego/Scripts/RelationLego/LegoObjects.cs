@@ -21,12 +21,18 @@ public static class LegoObjects
                            building_house4,
                            building_house5, 
 
-                           building_severalFloors1,
-                           building_severalFloors2,
-                           building_severalFloors3,
-                           building_severalFloors4,
-                           building_severalFloors5,
-   
+                           building_severalFloors1_1,
+                           building_severalFloors1_2,
+                           building_severalFloors1_3,
+                           building_severalFloors1_4,
+                           building_severalFloors1_5,
+
+                           building_severalFloors2_1,
+                           building_severalFloors2_2,
+                           building_severalFloors2_3,
+                           building_severalFloors2_4,
+                           building_severalFloors2_5,
+
                            skyscraper;
 
   //Middle
@@ -66,11 +72,11 @@ public static class LegoObjects
     building_house4 = (GameObject)Resources.Load("Modern/Building/House_4");
     building_house5 = (GameObject)Resources.Load("Modern/Building/House_5");
 
-    building_severalFloors1 = (GameObject)Resources.Load("Modern/Building/FloorsType1_1");
-    building_severalFloors2 = (GameObject)Resources.Load("Modern/Building/FloorsType1_2");
-    building_severalFloors3 = (GameObject)Resources.Load("Modern/Building/FloorsType1_3");
-    building_severalFloors4 = (GameObject)Resources.Load("Modern/Building/FloorsType1_4");
-    building_severalFloors5 = (GameObject)Resources.Load("Modern/Building/FloorsType1_5");
+    building_severalFloors1_1 = (GameObject)Resources.Load("Modern/Building/FloorsType1_1");
+    building_severalFloors1_2 = (GameObject)Resources.Load("Modern/Building/FloorsType1_2");
+    building_severalFloors1_3 = (GameObject)Resources.Load("Modern/Building/FloorsType1_3");
+    building_severalFloors1_4 = (GameObject)Resources.Load("Modern/Building/FloorsType1_4");
+    building_severalFloors1_5 = (GameObject)Resources.Load("Modern/Building/FloorsType1_5");
 
     skyscraper = (GameObject)Resources.Load("Modern/Building/skyscraper");
 

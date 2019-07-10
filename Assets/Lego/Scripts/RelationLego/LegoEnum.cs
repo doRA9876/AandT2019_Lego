@@ -19,7 +19,7 @@
 
   public enum LandscapeType_Details
   {                                                                                                                                        //LandscapeType_Overview
-    House, SeveralFloors, Skyscraper, /*Eiffel_Tower,*/                                                                                    //Building
+    House, SeveralFloors2, SeveralFloors3, SeveralFloors4, Skyscraper, /*Eiffel_Tower,*/                                                   //Building
     River_Straight, River_Curve, River_Intersection_T, River_Intersection_X, Sea, Pond,                                                    //Water
     Forest, Park,                                                                                                                          //Nature
     Road_Straight, Road_Curve, Road_Intersection_T, Road_Intersection_X, Road_Stop, Road_CrossWalk, Bridge, Road_Underpass, Road_Tunnel,   //Road
