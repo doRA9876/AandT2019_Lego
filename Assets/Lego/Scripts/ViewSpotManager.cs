@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-public class ViewSpot : MonoBehaviour
+public class ViewSpotManager : MonoBehaviour
 {
   [SerializeField]
   GameObject player;
   [SerializeField]
-  GameObject arrowN, arrowS, arrowE, arrowW;
+  GameObject arrows;
   private GameObject[,] viewSpots;
   private Vector2Int currentPos, nextN, nextS, nextE, nextW;
   private readonly Vector2Int EXCEPT_POS = new Vector2Int(-1, -1);

@@ -7,7 +7,7 @@ public class Ctrl : MonoBehaviour
   Anchor anchor;
   public SteamVR_Action_Boolean grabAction;
   public SteamVR_Input_Sources handType;
-  bool isGrasping;
+  bool isGrasping, isGriping;
 
   void Update()
   {
@@ -27,5 +27,7 @@ public class Ctrl : MonoBehaviour
         isGrasping = false;
       }
     }
+
+
   }
 }

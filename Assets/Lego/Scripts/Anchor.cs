@@ -1,22 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Anchor : MonoBehaviour
 {
-  [SerializeField]
-  private GameObject player;
-  private PlayerScript playerScript;
-  private static Rigidbody player_rigidbody;
-  private bool isLaunched = false, isPulling = false;
-  public bool isCollided = false;
+  private bool isLaunched = false, isPulling = false, isFixedJoint = false;
+  public bool isCollided = false, isCollisionPlayer;
   private Vector3 position;
   private AudioSource audioRazer, audioSlash;
 
   void Start()
   {
-    player_rigidbody = player.GetComponent<Rigidbody>();
-    playerScript = player.GetComponent<PlayerScript>();
     AudioSource[] audioSource = GetComponents<AudioSource>();
     audioRazer = audioSource[0];
     audioSlash = audioSource[1];
@@ -68,12 +60,17 @@ public class Anchor : MonoBehaviour
 
   void OnTriggerEnter(Collider collider)
   {
-    if (collider.gameObject.tag == "Player" || collider.gameObject.tag == "Anchor") return;
-    if (isLaunched)
+    if (collider.gameObject.tag == "Anchor") return;
+    if (isLaunched && !isCollided)
     {
+      audioSlash.PlayOneShot(audioSlash.clip);
       isCollided = true;
       position = transform.position;
-      audioSlash.PlayOneShot(audioSlash.clip);
     }
+  }
+
+  void OnTriggerExit(Collider collider)
+  {
+    if(collider.gameObject.tag == "Player") isCollisionPlayer = false;
   }
 }
