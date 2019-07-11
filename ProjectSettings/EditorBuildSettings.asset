@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Lego/Scenes/Main.unity
     guid: 5e44ab74a2f5aeb4fafe39e98b147336
-  - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/2630c435d01a5f140a38c69404654f18
-    guid: 2630c435d01a5f140a38c69404654f18
+  - enabled: 1
+    path: Assets/Lego/Scenes/Landscape.unity
+    guid: 035b89a6076b995408284a22674f3c3d
   m_configObjects: {}
