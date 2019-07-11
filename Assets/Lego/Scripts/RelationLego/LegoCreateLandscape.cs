@@ -232,7 +232,7 @@ class LandscapeLegoInfo
                     return LegoObjects.skyscraper_4;
 
                 case 4:
-                    return LegoObjects.eiffel_tower;
+                    return LegoObjects.skyscraper_5;
 
                 default:
                     return LegoObjects.space;
@@ -307,7 +307,7 @@ class LandscapeLegoInfo
           return LegoObjects.forest_1;
 
         case LandscapeType_Details.Park:
-          return LegoObjects.space;
+          return LegoObjects.park_1;
 
         default:
           return LegoObjects.space;
@@ -796,7 +796,6 @@ public class LegoCreateLandscape : MonoBehaviour
 
   void CreateLandscape()
   {
-    //int randomNum = Random.Range(0, 5);
     LegoObjects.LoadGameObjects();
     GameObject NewObj;
 
