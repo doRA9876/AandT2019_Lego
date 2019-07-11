@@ -13,6 +13,7 @@ class LandscapeLegoInfo
   public LandscapeType_Details detail;
   public int height;
   public Direction direction;
+  static bool[] setedBuild = new bool[6] { true, true, true, true, true, true };
 
   public LandscapeLegoInfo()
   {
@@ -215,7 +216,43 @@ class LandscapeLegoInfo
 
     GameObject GetRandomSkyscrapers()
     {
-            int randomNum = Random.Range(0, 5);
+            int randomNum = Random.Range(0, 6);
+            /*//static bool[] setedBuild = new bool[6] { true, true, true, true, true, true };
+
+            if (randomNum == 0 && setedBuild[0] == true)
+            {
+                setedBuild[0] = false;
+                return LegoObjects.skyscraper_1;
+            }
+            else if (randomNum == 1 && setedBuild[1] == true)
+            {
+                setedBuild[1] = false;
+                return LegoObjects.skyscraper_2;
+            }
+            else if (randomNum == 2 && setedBuild[2] == true)
+            {
+                setedBuild[2] = false;
+                return LegoObjects.skyscraper_3;
+            }
+            else if (randomNum == 3 && setedBuild[3] == true)
+            {
+                setedBuild[3] = false;
+                return LegoObjects.skyscraper_4;
+            }
+            else if (randomNum == 4 && setedBuild[4] == true)
+            {
+                setedBuild[4] = false;
+                return LegoObjects.skyscraper_5;
+            }
+            else if (randomNum == 5 && setedBuild[5] == true)
+            {
+                setedBuild[5] = false;
+                return LegoObjects.eiffel_tower;
+            }
+            else
+            {
+                setedBuild =
+            }*/
 
             switch (randomNum)
             {
@@ -233,6 +270,9 @@ class LandscapeLegoInfo
 
                 case 4:
                     return LegoObjects.skyscraper_5;
+
+                case 5:
+                    return LegoObjects.eiffel_tower;
 
                 default:
                     return LegoObjects.space;
