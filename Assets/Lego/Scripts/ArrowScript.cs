@@ -5,11 +5,10 @@ using UnityEngine;
 public class ArrowScript : MonoBehaviour
 {
   [SerializeField]
-  ViewSpot viewSpot;
+  ViewSpotManager viewSpot;
 
   void OnTriggerEnter()
   {
     viewSpot.TouchedArrow(gameObject.name);
-    Debug.Log("ok");
   }
 }

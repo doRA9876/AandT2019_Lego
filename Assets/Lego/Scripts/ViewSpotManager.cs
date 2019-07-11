@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-public class ViewSpot : MonoBehaviour
+public class ViewSpotManager : MonoBehaviour
 {
   [SerializeField]
-  GameObject CameraRig;
+  GameObject player;
   [SerializeField]
-  GameObject arrowN, arrowS, arrowE, arrowW;
+  GameObject arrows;
   private GameObject[,] viewSpots;
   private Vector2Int currentPos, nextN, nextS, nextE, nextW;
   private readonly Vector2Int EXCEPT_POS = new Vector2Int(-1, -1);
@@ -32,8 +32,10 @@ public class ViewSpot : MonoBehaviour
 
   public void Move(int x, int y)
   {
-    Vector3 newPos = viewSpots[x, y].transform.position;
-    CameraRig.transform.position = newPos;
+    float xpos = viewSpots[x, y].transform.position.x;
+    float zpos = viewSpots[x, y].transform.position.z;
+    Vector3 newPos = new Vector3(xpos, 5f, zpos);
+    player.transform.position = newPos;
     currentPos.x = x;
     currentPos.y = y;
     FindArroundNext();
@@ -55,7 +57,7 @@ public class ViewSpot : MonoBehaviour
       if (viewSpots[x, y] != null)
       {
         Move(x, y);
-        return;
+        break;
       }
     }
   }
@@ -81,6 +83,7 @@ public class ViewSpot : MonoBehaviour
 
   void UpdateArrow()
   {
+    /*
     if (nextN == EXCEPT_POS) arrowN.SetActive(false);
     else arrowN.SetActive(true);
 
@@ -92,6 +95,7 @@ public class ViewSpot : MonoBehaviour
 
     if(nextW == EXCEPT_POS) arrowW.SetActive(false);
     else arrowW.SetActive(true);
+    */
   }
 
   public void TouchedArrow(string arrowName)

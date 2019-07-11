@@ -8,6 +8,8 @@ TagManager:
   - ViewSpot
   - Building
   - Road
+  - Anchor
+  - Car
   layers:
   - Default
   - TransparentFX

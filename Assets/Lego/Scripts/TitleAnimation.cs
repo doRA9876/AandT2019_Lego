@@ -106,7 +106,7 @@ public class TitleAnimation : MonoBehaviour
         break;
 
       case 6:
-        StartCoroutine(LegoGeneric.DelayMethod(1f, () =>
+        StartCoroutine(LegoGeneric.DelayMethod(3f, () =>
         {
           gameObject.SetActive(false);
           parent.GetComponent<LegoInit>().enabled = true;

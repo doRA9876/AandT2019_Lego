@@ -18,6 +18,7 @@ public class WayPointTrigger : MonoBehaviour
 
   void OnTriggerStay(Collider collider)
   {
-    parent.GetComponent<MoveCar>().Init(collider, wayPoint);
+    if (collider.gameObject.tag == "Car")
+      parent.GetComponent<MoveCar>().Init(collider, wayPoint);
   }
 }

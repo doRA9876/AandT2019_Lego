@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8864995429020227528}
   - component: {fileID: 8864995429020227534}
   - component: {fileID: 8864995429020227529}
+  - component: {fileID: 8422772328171775628}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -77,6 +78,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &8422772328171775628
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8864995429020227531}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 2.220446e-16, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8864995430164683595
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,7 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8864995430164683592}
   m_Layer: 0
-  m_Name: Forest_3
+  m_Name: forest_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

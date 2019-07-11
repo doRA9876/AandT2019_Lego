@@ -428,6 +428,8 @@ public class LegoCreateLandscape : MonoBehaviour
   private bool UseSaveData = false, isDebugMode = false, isPlayable = false;
   [SerializeField]
   private string SaveDataName = "";
+  [SerializeField]
+  private int instanceHeight = 0;
 
   private LandscapeLegoInfo[,] landscapeLegoMap_ = new LandscapeLegoInfo[LegoData.LANDSCAPE_MAP_WIDTH, LegoData.LANDSCAPE_MAP_HEIGHT];
   //private LandscapeLegoInfo[,] roadMap = new LandscapeLegoInfo[LegoData.LANDSCAPE_MAP_WIDTH, LegoData.LANDSCAPE_MAP_HEIGHT];//ロードマップ
@@ -985,7 +987,7 @@ public class LegoCreateLandscape : MonoBehaviour
 
         if (landscapeLegoMap_[x, y].overView == LandscapeType_OverView.Building)
         {
-            NewObj = Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, 100f, y * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
+            NewObj = Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, instanceHeight, y * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
             NewObj.tag = "Building";
         }
         else
@@ -996,7 +998,7 @@ public class LegoCreateLandscape : MonoBehaviour
 
   void SetStartPlayerPosition()//プレイヤーの初期位置を決める
   {
-    ViewSpot spotScript = gameObject.GetComponent<ViewSpot>();
+    ViewSpotManager spotScript = GameObject.Find("ViewSpotManager").GetComponent<ViewSpotManager>();
     spotScript.Init();
     MovePosition();
 
