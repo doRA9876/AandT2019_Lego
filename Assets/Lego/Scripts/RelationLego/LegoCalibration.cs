@@ -39,6 +39,7 @@ public class LegoCalibration : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
+    GameObject.Find("Kinect Camera").SetActive(true);
     if (depthImage_ == null)
     {
       Debug.LogError("[Depth Image] is not attaced.", depthImage_);

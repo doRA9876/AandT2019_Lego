@@ -338,7 +338,12 @@ public class LegoCreateLandscape : MonoBehaviour
     {
       legoBlockMap = LegoData.legoMap;
     }
-    if (legoBlockMap == null) Debug.LogError("No savedata.");
+
+    if(legoBlockMap == null)
+    {
+      Debug.LogError("No SaveData");
+      UnityEditor.EditorApplication.isPlaying = false;
+    }
 
     if (isDebugMode)
     {

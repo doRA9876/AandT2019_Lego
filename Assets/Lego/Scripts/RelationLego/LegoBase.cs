@@ -31,6 +31,7 @@ public class LegoBase : MonoBehaviour
   private static readonly int MAX_CREATE_NUM = 60;
   private float timeLeft__1FPS_, timeLeft__15FPS_;
   private AudioSource audioSource;
+    GameObject mainCamera;
   #endregion
 
   protected void Start()
@@ -48,6 +49,9 @@ public class LegoBase : MonoBehaviour
 
     audioSource = GetComponent<AudioSource>();
     audioSource.PlayOneShot(audioSource.clip);
+
+    mainCamera = GameObject.Find("Kinect Camera");
+    mainCamera.SetActive(true);
   }
 
   void Update()
@@ -218,8 +222,6 @@ public class LegoBase : MonoBehaviour
     JsonHelper_TwodimensionalArray.SaveAsJson(currentLandscapeMap_, LegoData.LANDSCAPE_MAP_WIDTH, LegoData.LANDSCAPE_MAP_HEIGHT, savedataName);
 
     //kinectは用済みなので削除する。また必要になる場合は削除せずに保持しておいたほうが良い可能性がある。
-    GameObject mainCamera = GameObject.Find("Kinect Camera");
-    //SceneManager.MoveGameObjectToScene(mainCamera, SceneManager.GetActiveScene());
     mainCamera.SetActive(false);
     SceneManager.LoadScene("Landscape");
   }

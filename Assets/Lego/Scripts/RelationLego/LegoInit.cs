@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class LegoInit : MonoBehaviour
 {
   [SerializeField]
-  GameObject kinectCamera;
+  GameObject mainCamera;
   AudioSource audioSource;
 
   void Awake()
@@ -27,7 +27,7 @@ public class LegoInit : MonoBehaviour
 
   public void OnClickButton_Calibration()
   {
-    kinectCamera.SetActive(true);
+    mainCamera.SetActive(true);
     Debug.Log("Calibration画面へ移行します。");
     LegoData.isInitialized = true;
     StartCoroutine(LegoGeneric.DelayMethod(3.5f, () =>
@@ -38,7 +38,7 @@ public class LegoInit : MonoBehaviour
 
   public void OnClickButton_Play()
   {
-    kinectCamera.SetActive(true);
+    mainCamera.SetActive(true);
     LegoData.isInitialized = true;
     if (LegoData.isCalibrated)
     {
