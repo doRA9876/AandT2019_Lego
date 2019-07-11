@@ -217,7 +217,7 @@ class LandscapeLegoInfo
     GameObject GetRandomSkyscrapers()
     {
             int randomNum = Random.Range(0, 6);
-            /*//static bool[] setedBuild = new bool[6] { true, true, true, true, true, true };
+            //static bool[] setedBuild = new bool[6] { true, true, true, true, true, true };
 
             if (randomNum == 0 && setedBuild[0] == true)
             {
@@ -251,10 +251,16 @@ class LandscapeLegoInfo
             }
             else
             {
-                setedBuild =
-            }*/
+                setedBuild[0] = true;
+                setedBuild[1] = true;
+                setedBuild[2] = true;
+                setedBuild[3] = true;
+                setedBuild[4] = true;
 
-            switch (randomNum)
+                return LegoObjects.skyscraper_1;
+            }
+
+            /*switch (randomNum)
             {
                 case 0:
                     return LegoObjects.skyscraper_1;
@@ -276,7 +282,7 @@ class LandscapeLegoInfo
 
                 default:
                     return LegoObjects.space;
-            }
+            }*/
         }
 
     GameObject GetRoadObject()
@@ -347,11 +353,28 @@ class LandscapeLegoInfo
           return LegoObjects.forest_1;
 
         case LandscapeType_Details.Park:
-          return LegoObjects.park_1;
+          return GetRandomParks();//LegoObjects.park_1;
 
         default:
           return LegoObjects.space;
       }
+    }
+
+    GameObject GetRandomParks()
+    {
+            int randomNum = Random.Range(0, 2);
+
+            switch (randomNum)
+            {
+                case 0:
+                    return LegoObjects.park_1;
+
+                case 1:
+                    return LegoObjects.shrine_1;
+
+                default:
+                    return LegoObjects.space;
+            }
     }
   }
 }
