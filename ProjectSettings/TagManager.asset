@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - CarGenerator
+  - ViewSpot
+  - Building
+  - Road
+  - Anchor
+  - Car
   layers:
   - Default
   - TransparentFX
