@@ -840,7 +840,7 @@ public class LegoCreateLandscape : MonoBehaviour
 
         if (landscapeLegoMap_[x, y].overView == LandscapeType_OverView.Building)
         {
-            NewObj = Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, /*10*/0f, y * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
+            NewObj = Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, 100f, y * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
             NewObj.tag = "Building";
         }
         else
