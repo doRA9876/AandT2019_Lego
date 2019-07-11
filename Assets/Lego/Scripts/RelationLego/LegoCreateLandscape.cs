@@ -555,6 +555,7 @@ public class LegoCreateLandscape : MonoBehaviour
 
             case LandscapeType_OverView.Road:
               landscapeLegoMap_[x, y].detail = SetRoadDetails(landscapeLegoMap_[x, y]);
+              SetTunnelDetails(x, y);
               landscapeLegoMap_[x, y].direction = SetRoadDirection(landscapeLegoMap_[x, y]);
               break;
 
@@ -766,6 +767,12 @@ public class LegoCreateLandscape : MonoBehaviour
       return LandscapeType_Details.Road_Intersection_X;
 
     return LandscapeType_Details.Space;//一つだけあるRoadはSpaceにしておく
+  }
+
+  void SetTunnelDetails(int x, int y)
+  {
+        if (x == 0 || y == 0 || x == 15 || y == 15)
+            landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Tunnel;
   }
 
   Direction SetRoadDirection(LandscapeLegoInfo landscapeLegoMap)
