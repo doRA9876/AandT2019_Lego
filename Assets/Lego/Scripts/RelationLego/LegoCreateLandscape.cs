@@ -82,9 +82,33 @@ class LandscapeLegoInfo
         break;
 
       default:
+        obj = RandomSpaces();
         break;
     }
     return obj;
+
+    GameObject RandomSpaces()
+    {
+            int randomNum = Random.Range(0, 4);
+
+            switch (randomNum)
+            {
+                case 0:
+                    return LegoObjects.space_2;
+
+                case 1:
+                    return LegoObjects.space;
+
+                case 2:
+                    return LegoObjects.space;
+
+                case 3:
+                    return LegoObjects.space;
+
+                default:
+                    return LegoObjects.space;
+            }
+    }
 
     GameObject GetBuildingObject()
     {
@@ -106,7 +130,7 @@ class LandscapeLegoInfo
           return GetRandomSkyscrapers();
 
         default:
-          return LegoObjects.space;
+          return LegoObjects.space_2;
       }
     }
 
@@ -132,7 +156,7 @@ class LandscapeLegoInfo
                     return LegoObjects.building_house5;
 
                 default:
-                    return LegoObjects.space;
+                    return LegoObjects.space_2;
         }
     }
 
@@ -158,7 +182,7 @@ class LandscapeLegoInfo
                     return LegoObjects.building_severalFloors1_5;
 
                 default:
-                    return LegoObjects.space;
+                    return LegoObjects.space_2;
             }
     }
 
@@ -184,7 +208,7 @@ class LandscapeLegoInfo
                     return LegoObjects.building_severalFloors2_5;
 
                 default:
-                    return LegoObjects.space;
+                    return LegoObjects.space_2;
             }
     }
 
@@ -210,14 +234,13 @@ class LandscapeLegoInfo
                     return LegoObjects.building_severalFloors3_5;
 
                 default:
-                    return LegoObjects.space;
+                    return LegoObjects.space_2;
             }
     }
 
     GameObject GetRandomSkyscrapers()
     {
             int randomNum = Random.Range(0, 6);
-            /*//static bool[] setedBuild = new bool[6] { true, true, true, true, true, true };
 
             if (randomNum == 0 && setedBuild[0] == true)
             {
@@ -251,10 +274,16 @@ class LandscapeLegoInfo
             }
             else
             {
-                setedBuild =
-            }*/
+                setedBuild[0] = true;
+                setedBuild[1] = true;
+                setedBuild[2] = true;
+                setedBuild[3] = true;
+                setedBuild[4] = true;
 
-            switch (randomNum)
+                return LegoObjects.skyscraper_1;
+            }
+
+            /*switch (randomNum)
             {
                 case 0:
                     return LegoObjects.skyscraper_1;
@@ -276,7 +305,7 @@ class LandscapeLegoInfo
 
                 default:
                     return LegoObjects.space;
-            }
+            }*/
         }
 
     GameObject GetRoadObject()
@@ -344,14 +373,51 @@ class LandscapeLegoInfo
       switch (this.detail)
       {
         case LandscapeType_Details.Forest:
-          return LegoObjects.forest_1;
+          return GetRandomForests();
 
         case LandscapeType_Details.Park:
-          return LegoObjects.park_1;
+          return GetRandomParks();//LegoObjects.park_1;
 
         default:
           return LegoObjects.space;
       }
+    }
+
+    GameObject GetRandomForests()
+    {
+            int randomNum = Random.Range(0, 3);
+
+            switch (randomNum)
+            {
+                case 0:
+                    return LegoObjects.forest_1;
+
+                case 1:
+                    return LegoObjects.forest_2;
+
+                case 2:
+                    return LegoObjects.forest_3;
+
+                default:
+                    return LegoObjects.space;
+            }
+        }
+
+    GameObject GetRandomParks()
+    {
+            int randomNum = Random.Range(0, 2);
+
+            switch (randomNum)
+            {
+                case 0:
+                    return LegoObjects.park_1;
+
+                case 1:
+                    return LegoObjects.shrine_1;
+
+                default:
+                    return LegoObjects.space;
+            }
     }
   }
 }
@@ -817,25 +883,54 @@ public class LegoCreateLandscape : MonoBehaviour
         CreateRoad_StopAfter(x + 1, y);
       }
       else
-        SetBuildingFrontRoad(DirectionCount, x, y);
+        SetBuildingNearRoad(DirectionCount, x, y);
     }
 
-    void SetBuildingFrontRoad(int[] d, int x, int y)
-    {
-       if (d[0] == 1 && (landscapeLegoMap_[x, y + 1].overView == LandscapeType_OverView.Building || landscapeLegoMap_[x, y + 1].detail == LandscapeType_Details.Park) 
-           && landscapeLegoMap_[x, y + 1].direction == Direction.North)
-         landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
-       else if (d[1] == 1 && (landscapeLegoMap_[x, y - 1].overView == LandscapeType_OverView.Building || landscapeLegoMap_[x, y - 1].detail == LandscapeType_Details.Park) 
-                && landscapeLegoMap_[x, y - 1].direction == Direction.South)
-         landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
-       else if (d[2] == 1 && (landscapeLegoMap_[x - 1, y].overView == LandscapeType_OverView.Building || landscapeLegoMap_[x + 1, y].detail == LandscapeType_Details.Park) 
-                && landscapeLegoMap_[x - 1, y].direction == Direction.East)
-         landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
-       else if (d[3] == 1 && (landscapeLegoMap_[x + 1, y].overView == LandscapeType_OverView.Building || landscapeLegoMap_[x - 1, y].detail == LandscapeType_Details.Park) 
-                && landscapeLegoMap_[x + 1, y].direction == Direction.West)
-         landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
-       else
-         landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Underpass;
+    void SetBuildingNearRoad(int[] d, int x, int y)//Road_Stop周りにBuilding or ParkがあったらRoad_Stop、なかったらRoad_Underpass
+        {
+        int[] BuildingCount = new int[4] { 0, 0, 0, 0 };
+        int[] ParkCount = new int[4] { 0, 0, 0, 0 };
+
+        if (landscapeLegoMap_[x, y + 1].overView == LandscapeType_OverView.Building)
+            BuildingCount[0]++;
+        else if (landscapeLegoMap_[x, y - 1].overView == LandscapeType_OverView.Building)
+            BuildingCount[1]++;
+        else if (landscapeLegoMap_[x - 1, y].overView == LandscapeType_OverView.Building)
+            BuildingCount[2]++;
+        else if (landscapeLegoMap_[x + 1, y].overView == LandscapeType_OverView.Building)
+            BuildingCount[3]++;
+
+        if (landscapeLegoMap_[x, y + 1].detail == LandscapeType_Details.Park)
+            ParkCount[0]++;
+        else if (landscapeLegoMap_[x, y - 1].detail == LandscapeType_Details.Park)
+            ParkCount[1]++;
+        else if (landscapeLegoMap_[x - 1, y].detail == LandscapeType_Details.Park)
+            ParkCount[2]++;
+        else if (landscapeLegoMap_[x + 1, y].detail == LandscapeType_Details.Park)
+            ParkCount[3]++;
+
+            if (d[0] == 1 && (landscapeLegoMap_[x, y + 1].overView == LandscapeType_OverView.Building || landscapeLegoMap_[x, y + 1].detail == LandscapeType_Details.Park)
+                && landscapeLegoMap_[x, y + 1].direction == Direction.North)
+                landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
+            else if (d[1] == 1 && (landscapeLegoMap_[x, y - 1].overView == LandscapeType_OverView.Building || landscapeLegoMap_[x, y - 1].detail == LandscapeType_Details.Park)
+                     && landscapeLegoMap_[x, y - 1].direction == Direction.South)
+                landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
+            else if (d[2] == 1 && (landscapeLegoMap_[x - 1, y].overView == LandscapeType_OverView.Building || landscapeLegoMap_[x - 1, y].detail == LandscapeType_Details.Park)
+                     && landscapeLegoMap_[x - 1, y].direction == Direction.East)
+                landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
+            else if (d[3] == 1 && (landscapeLegoMap_[x + 1, y].overView == LandscapeType_OverView.Building || landscapeLegoMap_[x + 1, y].detail == LandscapeType_Details.Park)
+                     && landscapeLegoMap_[x + 1, y].direction == Direction.West)
+                landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
+            else if ((BuildingCount[0] == 1 || ParkCount[0] == 1) && landscapeLegoMap_[x, y + 1].direction == Direction.North)
+                landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
+            else if ((BuildingCount[1] == 1 || ParkCount[1] == 1) && landscapeLegoMap_[x, y - 1].direction == Direction.South)
+                landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
+            else if ((BuildingCount[0] == 1 || ParkCount[0] == 1) && landscapeLegoMap_[x - 1, y].direction == Direction.East)
+                landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
+            else if ((BuildingCount[1] == 1 || ParkCount[1] == 1) && landscapeLegoMap_[x + 1, y].direction == Direction.West)
+                landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
+            else
+                landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Underpass;
     }
   }
 
@@ -852,7 +947,7 @@ public class LegoCreateLandscape : MonoBehaviour
         if (obj == null)
         {
           Debug.LogError(landscapeLegoMap_[x, y].detail + " is not exist.");
-          obj = LegoObjects.space;
+          obj = LegoObjects.space_2;
         }
         float rotationAngle;
         switch (landscapeLegoMap_[x, y].direction)

@@ -56,10 +56,13 @@ public static class LegoObjects
   public static GameObject river_straight, river_curve, river_intersection_T, river_intersection_X, pond, sea;
 
   //Nature
-  public static GameObject forest_1, park_1;
+  public static GameObject forest_1,
+                           forest_2,
+                           forest_3,
+                           park_1, shrine_1;
 
   //Space
-  public static GameObject space;
+  public static GameObject space, space_2; 
 
   public static void LoadGameObjects()
   {
@@ -120,11 +123,15 @@ public static class LegoObjects
     pond = (GameObject)Resources.Load("Water/Pond");
 
     //Nature
-    forest_1 = (GameObject)Resources.Load("Nature/Forest_3");
-    park_1 = (GameObject)Resources.Load("Nature/Park");
+    forest_1 = (GameObject)Resources.Load("Nature/Forest_1");
+    forest_2 = (GameObject)Resources.Load("Nature/Forest_2");
+    forest_3 = (GameObject)Resources.Load("Nature/Forest_3");
+        park_1 = (GameObject)Resources.Load("Nature/Park");
+    shrine_1 = (GameObject)Resources.Load("Nature/Shrine");
 
     //Space
-    space = (GameObject)Resources.Load("Space/Space");
+    space = (GameObject)Resources.Load("Space/Space_2");
+    space_2 = (GameObject)Resources.Load("Space/Space");
 
     isLoaded = true;
   }
