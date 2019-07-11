@@ -737,10 +737,6 @@ public class LegoCreateLandscape : MonoBehaviour
 
   LandscapeType_Details SetRoadDetails(LandscapeLegoInfo landscapeLegoMap)
   {
-    if ((landscapeLegoMap.north == LandscapeType_OverView.Water && landscapeLegoMap.south == LandscapeType_OverView.Water) || (landscapeLegoMap.east == LandscapeType_OverView.Water
-        && landscapeLegoMap.west == LandscapeType_OverView.Water))//南北か東西がWaterで挟まれているときBridgeと判定
-      return LandscapeType_Details.Bridge;
-
     int Count = 0;
     if (landscapeLegoMap.north == LandscapeType_OverView.Road)
       Count++;
@@ -750,6 +746,13 @@ public class LegoCreateLandscape : MonoBehaviour
       Count++;
     if (landscapeLegoMap.west == LandscapeType_OverView.Road)
       Count++;
+
+    if (Count == 0)
+        return LandscapeType_Details.Space;//一つだけあるRoadはSpaceにしておく
+
+    if ((landscapeLegoMap.north == LandscapeType_OverView.Water && landscapeLegoMap.south == LandscapeType_OverView.Water) || (landscapeLegoMap.east == LandscapeType_OverView.Water
+        && landscapeLegoMap.west == LandscapeType_OverView.Water))//南北か東西がWaterで挟まれているときBridgeと判定
+        return LandscapeType_Details.Bridge;
 
     if (Count == 1)//東西南北のRoadの数で種類を判定
       return LandscapeType_Details.Road_Stop;
@@ -766,12 +769,12 @@ public class LegoCreateLandscape : MonoBehaviour
     else if (Count == 4)
       return LandscapeType_Details.Road_Intersection_X;
 
-    return LandscapeType_Details.Space;//一つだけあるRoadはSpaceにしておく
+      return LandscapeType_Details.Space;
   }
 
   void SetTunnelDetails(int x, int y)
   {
-        if (x == 0 || y == 0 || x == 15 || y == 15)
+        if ((x == 0 || y == 0 || x == 15 || y == 15) && landscapeLegoMap_[x, y].detail != LandscapeType_Details.Space)
             landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Tunnel;
   }
 
