@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public static class LegoObjects
 {
@@ -10,14 +12,41 @@ public static class LegoObjects
 
   //Modern
   //Road
-  public static GameObject modern_road_straight, modern_road_intersection_T, modern_road_intersection_X, modern_road_curve, modern_road_tunnel, modern_road_underpass, modern_road_stop, modern_road_crossWalk, modern_bridge;
+  public static GameObject road_straight, road_intersection_T, road_intersection_X, road_curve, road_tunnel, road_underpass, road_stop, road_crossWalk, bridge;
 
   //Building
-  public static GameObject modern_building_1, modern_building_2;
-  public static GameObject eiffelTower;
+  public static GameObject building_house1,
+                           building_house2,
+                           building_house3,
+                           building_house4,
+                           building_house5, 
+
+                           building_severalFloors1_1,
+                           building_severalFloors1_2,
+                           building_severalFloors1_3,
+                           building_severalFloors1_4,
+                           building_severalFloors1_5,
+
+                           building_severalFloors2_1,
+                           building_severalFloors2_2,
+                           building_severalFloors2_3,
+                           building_severalFloors2_4,
+                           building_severalFloors2_5,
+
+                           building_severalFloors3_1,
+                           building_severalFloors3_2,
+                           building_severalFloors3_3,
+                           building_severalFloors3_4,
+                           building_severalFloors3_5,
+
+                           skyscraper_1,
+                           skyscraper_2,
+                           skyscraper_3,
+                           skyscraper_4,
+                           eiffel_tower;
 
   //Middle
-  public static GameObject middle_building_1;
+  //public static GameObject middle_building_1;
 
   //Fantasy
 
@@ -35,23 +64,50 @@ public static class LegoObjects
   {
     //Modern
     //Road
-    modern_road_straight = (GameObject)Resources.Load("Modern/Road/Road_Straight");
-    modern_road_intersection_T = (GameObject)Resources.Load("Modern/Road/Road_Intersection_T");
-    modern_road_intersection_X = (GameObject)Resources.Load("Modern/Road/Road_Intersection_X");
-    modern_road_curve = (GameObject)Resources.Load("Modern/Road/Road_Curve");
-    modern_road_tunnel = (GameObject)Resources.Load("Modern/Road/Tunnel");
-    modern_road_underpass = (GameObject)Resources.Load("Modern/Road/Underpass");
-    modern_road_stop = (GameObject)Resources.Load("Modern/Road/Road_Stop");
-    modern_road_crossWalk = (GameObject)Resources.Load("Modern/Road/Road_Crosswalk");
-    modern_bridge = (GameObject)Resources.Load("Modern/Road/Bridge");
+    road_straight = (GameObject)Resources.Load("Modern/Road/Road_Straight");
+    road_intersection_T = (GameObject)Resources.Load("Modern/Road/Road_Intersection_T");
+    road_intersection_X = (GameObject)Resources.Load("Modern/Road/Road_Intersection_X");
+    road_curve = (GameObject)Resources.Load("Modern/Road/Road_Curve");
+    road_tunnel = (GameObject)Resources.Load("Modern/Road/Tunnel");
+    road_underpass = (GameObject)Resources.Load("Modern/Road/Underpass");
+    road_stop = (GameObject)Resources.Load("Modern/Road/Road_Stop");
+    road_crossWalk = (GameObject)Resources.Load("Modern/Road/Road_Crosswalk");
+    bridge = (GameObject)Resources.Load("Modern/Road/Bridge");
 
     //Building
-    modern_building_1 = (GameObject)Resources.Load("Modern/Building/Building_1");
-    modern_building_2 = (GameObject)Resources.Load("Modern/Building/Building_2");
-    eiffelTower = (GameObject)Resources.Load("Modern/Building/EiffelTower");
+    //RandomLoadBuildings();
+    building_house1 = (GameObject)Resources.Load("Modern/Building/House_1");
+    building_house2 = (GameObject)Resources.Load("Modern/Building/House_2");
+    building_house3 = (GameObject)Resources.Load("Modern/Building/House_3");
+    building_house4 = (GameObject)Resources.Load("Modern/Building/House_4");
+    building_house5 = (GameObject)Resources.Load("Modern/Building/House_5");
+
+    building_severalFloors1_1 = (GameObject)Resources.Load("Modern/Building/FloorsType1_1");
+    building_severalFloors1_2 = (GameObject)Resources.Load("Modern/Building/FloorsType1_2");
+    building_severalFloors1_3 = (GameObject)Resources.Load("Modern/Building/FloorsType1_3");
+    building_severalFloors1_4 = (GameObject)Resources.Load("Modern/Building/FloorsType1_4");
+    building_severalFloors1_5 = (GameObject)Resources.Load("Modern/Building/FloorsType1_5");
+
+    building_severalFloors2_1 = (GameObject)Resources.Load("Modern/Building/FloorsType2_1");
+    building_severalFloors2_2 = (GameObject)Resources.Load("Modern/Building/FloorsType2_2");
+    building_severalFloors2_3 = (GameObject)Resources.Load("Modern/Building/FloorsType2_3");
+    building_severalFloors2_4 = (GameObject)Resources.Load("Modern/Building/FloorsType2_4");
+    building_severalFloors2_5 = (GameObject)Resources.Load("Modern/Building/FloorsType2_5");
+
+    building_severalFloors3_1 = (GameObject)Resources.Load("Modern/Building/FloorsType3_1");
+    building_severalFloors3_2 = (GameObject)Resources.Load("Modern/Building/FloorsType3_2");
+    building_severalFloors3_3 = (GameObject)Resources.Load("Modern/Building/FloorsType3_3");
+    building_severalFloors3_4 = (GameObject)Resources.Load("Modern/Building/FloorsType3_4");
+    building_severalFloors3_5 = (GameObject)Resources.Load("Modern/Building/FloorsType3_5");
+
+    skyscraper_1 = (GameObject)Resources.Load("Modern/Building/skyscraper_1");
+    skyscraper_2 = (GameObject)Resources.Load("Modern/Building/skyscraper_2");
+    skyscraper_3 = (GameObject)Resources.Load("Modern/Building/skyscraper_3");
+    skyscraper_4 = (GameObject)Resources.Load("Modern/Building/skyscraper_4");
+    eiffel_tower = (GameObject)Resources.Load("Modern/Building/EiffelTower");
 
     //Middle
-    modern_building_1 = (GameObject)Resources.Load("Middle/Building/Building_1");
+    //building_house = (GameObject)Resources.Load("Middle/Building/Building_1");
     //Fantasy
 
     //Water
@@ -69,5 +125,35 @@ public static class LegoObjects
     space = (GameObject)Resources.Load("Space/Space");
 
     isLoaded = true;
+
+    /*void RandomLoadBuildings()
+    {
+        switch (random)
+        {
+            case 0:
+                building_house = (GameObject)Resources.Load("Modern/Building/House_1");
+                break;
+
+            case 1:
+                building_house = (GameObject)Resources.Load("Modern/Building/House_2");
+                break;
+
+            case 2:
+                building_house = (GameObject)Resources.Load("Modern/Building/House_3");
+                break;
+
+            case 3:
+                building_house = (GameObject)Resources.Load("Modern/Building/House_4");
+                break;
+
+            case 4:
+                building_house = (GameObject)Resources.Load("Modern/Building/House_5");
+                break;
+
+            default:
+                building_house = (GameObject)Resources.Load("Space/Space");
+                break;
+        }
+    }*/
   }
 }

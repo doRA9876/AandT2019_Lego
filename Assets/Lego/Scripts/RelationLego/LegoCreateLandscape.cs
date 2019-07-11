@@ -90,49 +90,185 @@ class LandscapeLegoInfo
       switch (this.detail)
       {
         case LandscapeType_Details.House:
-          return LegoObjects.modern_building_1;
+          return GetRandomHouse();
 
-        case LandscapeType_Details.Shop:
-          return LegoObjects.modern_building_2;
+        case LandscapeType_Details.SeveralFloors2:
+          return GetRandomSeveralFloors2();
+
+        case LandscapeType_Details.SeveralFloors3:
+          return GetRandomSeveralFloors3();
+
+        case LandscapeType_Details.SeveralFloors4:
+          return GetRandomSeveralFloors4();
 
         case LandscapeType_Details.Skyscraper:
-          return LegoObjects.eiffelTower;
+          return GetRandomSkyscrapers();
 
         default:
           return LegoObjects.space;
       }
     }
 
+    GameObject GetRandomHouse()
+    {
+        int randomNum = Random.Range(0, 5);
+
+        switch (randomNum)
+        {
+                case 0:
+                    return LegoObjects.building_house1;
+
+                case 1:
+                    return LegoObjects.building_house2;
+
+                case 2:
+                    return LegoObjects.building_house3;
+
+                case 3:
+                    return LegoObjects.building_house4;
+
+                case 4:
+                    return LegoObjects.building_house5;
+
+                default:
+                    return LegoObjects.space;
+        }
+    }
+
+    GameObject GetRandomSeveralFloors2()
+    {
+            int randomNum = Random.Range(0, 5);
+
+            switch (randomNum)
+            {
+                case 0:
+                    return LegoObjects.building_severalFloors1_1;
+
+                case 1:
+                    return LegoObjects.building_severalFloors1_2;
+
+                case 2:
+                    return LegoObjects.building_severalFloors1_3;
+
+                case 3:
+                    return LegoObjects.building_severalFloors1_4;
+
+                case 4:
+                    return LegoObjects.building_severalFloors1_5;
+
+                default:
+                    return LegoObjects.space;
+            }
+    }
+
+    GameObject GetRandomSeveralFloors3()
+    {
+            int randomNum = Random.Range(0, 5);
+
+            switch (randomNum)
+            {
+                case 0:
+                    return LegoObjects.building_severalFloors2_1;
+
+                case 1:
+                    return LegoObjects.building_severalFloors2_2;
+
+                case 2:
+                    return LegoObjects.building_severalFloors2_3;
+
+                case 3:
+                    return LegoObjects.building_severalFloors2_4;
+
+                case 4:
+                    return LegoObjects.building_severalFloors2_5;
+
+                default:
+                    return LegoObjects.space;
+            }
+    }
+
+    GameObject GetRandomSeveralFloors4()
+    {
+            int randomNum = Random.Range(0, 5);
+
+            switch (randomNum)
+            {
+                case 0:
+                    return LegoObjects.building_severalFloors3_1;
+
+                case 1:
+                    return LegoObjects.building_severalFloors3_2;
+
+                case 2:
+                    return LegoObjects.building_severalFloors3_3;
+
+                case 3:
+                    return LegoObjects.building_severalFloors3_4;
+
+                case 4:
+                    return LegoObjects.building_severalFloors3_5;
+
+                default:
+                    return LegoObjects.space;
+            }
+    }
+
+    GameObject GetRandomSkyscrapers()
+    {
+            int randomNum = Random.Range(0, 5);
+
+            switch (randomNum)
+            {
+                case 0:
+                    return LegoObjects.skyscraper_1;
+
+                case 1:
+                    return LegoObjects.skyscraper_2;
+
+                case 2:
+                    return LegoObjects.skyscraper_3;
+
+                case 3:
+                    return LegoObjects.skyscraper_4;
+
+                case 4:
+                    return LegoObjects.eiffel_tower;
+
+                default:
+                    return LegoObjects.space;
+            }
+        }
+
     GameObject GetRoadObject()
     {
       switch (this.detail)
       {
         case LandscapeType_Details.Road_Straight:
-          return LegoObjects.modern_road_straight;
+          return LegoObjects.road_straight;
 
         case LandscapeType_Details.Road_Curve:
-          return LegoObjects.modern_road_curve;
+          return LegoObjects.road_curve;
 
         case LandscapeType_Details.Road_Intersection_T:
-          return LegoObjects.modern_road_intersection_T;
+          return LegoObjects.road_intersection_T;
 
         case LandscapeType_Details.Road_Intersection_X:
-          return LegoObjects.modern_road_intersection_X;
+          return LegoObjects.road_intersection_X;
 
         case LandscapeType_Details.Road_Underpass:
-          return LegoObjects.modern_road_underpass;
+          return LegoObjects.road_underpass;
 
         case LandscapeType_Details.Road_Tunnel:
-          return LegoObjects.modern_road_tunnel;
+          return LegoObjects.road_tunnel;
 
         case LandscapeType_Details.Road_Stop:
-          return LegoObjects.modern_road_stop;
+          return LegoObjects.road_stop;
 
         case LandscapeType_Details.Road_CrossWalk:
-          return LegoObjects.modern_road_crossWalk;
+          return LegoObjects.road_crossWalk;
 
         case LandscapeType_Details.Bridge:
-          return LegoObjects.modern_bridge;
+          return LegoObjects.bridge;
 
         default:
           return LegoObjects.space;
@@ -337,10 +473,14 @@ public class LegoCreateLandscape : MonoBehaviour
 
   LandscapeType_Details SetBuildingDetails(LandscapeLegoInfo landscapeLegoMap)
   {
-    if (landscapeLegoMap.height >= 2 && landscapeLegoMap.height < 5)
-      return LandscapeType_Details.Shop;
-    else if (landscapeLegoMap.height == 5)
-      return LandscapeType_Details.Skyscraper;
+    if (landscapeLegoMap.height == 2)
+      return LandscapeType_Details.SeveralFloors2;
+    else if (landscapeLegoMap.height == 3)
+        return LandscapeType_Details.SeveralFloors3;
+    else if (landscapeLegoMap.height == 4)
+        return LandscapeType_Details.SeveralFloors4;
+    else if (landscapeLegoMap.height >= 5)
+        return LandscapeType_Details.Skyscraper;
     else
       return LandscapeType_Details.House;
   }
@@ -359,7 +499,7 @@ public class LegoCreateLandscape : MonoBehaviour
       return Direction.North;
   }
 
-  LandscapeType_Details SetWaterDetails(LandscapeLegoInfo landscapeLegoMap)
+  /*LandscapeType_Details SetWaterDetails(LandscapeLegoInfo landscapeLegoMap)
   {
     int Count = 0;
 
@@ -445,7 +585,7 @@ public class LegoCreateLandscape : MonoBehaviour
       return Direction.West;
     else
       return Direction.North;
-  }
+  }*/
 
   LandscapeType_Details SetNatureDetails(LandscapeLegoInfo landscapeLegoMap)
   {
@@ -479,7 +619,7 @@ public class LegoCreateLandscape : MonoBehaviour
             return Direction.West;
         else
             return Direction.North;
-    }
+  }
 
   LandscapeType_Details SetRoadDetails(LandscapeLegoInfo landscapeLegoMap)
   {
@@ -656,6 +796,7 @@ public class LegoCreateLandscape : MonoBehaviour
 
   void CreateLandscape()
   {
+    //int randomNum = Random.Range(0, 5);
     LegoObjects.LoadGameObjects();
     GameObject NewObj;
 
@@ -695,15 +836,9 @@ public class LegoCreateLandscape : MonoBehaviour
 
         if (landscapeLegoMap_[x, y].overView == LandscapeType_OverView.Building)
         {
-            NewObj = Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, 100f, y * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
+            NewObj = Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, /*10*/0f, y * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
             NewObj.tag = "Building";
         }
-        /*else if (landscapeLegoMap_[x, y].overView == LandscapeType_OverView.Road && (landscapeLegoMap_[x, y].detail != LandscapeType_Details.Bridge 
-                 && landscapeLegoMap_[x, y].detail != LandscapeType_Details.Road_Tunnel && landscapeLegoMap_[x, y].detail != LandscapeType_Details.Road_Underpass))
-        {
-            NewObj = Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, 50f, y * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
-            NewObj.tag = "Road";
-        }*/
         else
             Instantiate(obj, new Vector3(x * LegoData.LANDSCAPE_OBJECT_WIDTH, 0f, y * LegoData.LANDSCAPE_OBJECT_HEIGHT), Quaternion.Euler(0, rotationAngle, 0));
       }
