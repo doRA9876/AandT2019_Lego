@@ -102,7 +102,7 @@ class LandscapeLegoInfo
           return GetRandomSeveralFloors4();
 
         case LandscapeType_Details.Skyscraper:
-          return LegoObjects.skyscraper;
+          return GetRandomSkyscrapers();
 
         default:
           return LegoObjects.space;
@@ -207,6 +207,32 @@ class LandscapeLegoInfo
 
                 case 4:
                     return LegoObjects.building_severalFloors3_5;
+
+                default:
+                    return LegoObjects.space;
+            }
+    }
+
+    GameObject GetRandomSkyscrapers()
+    {
+            int randomNum = Random.Range(0, 5);
+
+            switch (randomNum)
+            {
+                case 0:
+                    return LegoObjects.skyscraper_1;
+
+                case 1:
+                    return LegoObjects.skyscraper_2;
+
+                case 2:
+                    return LegoObjects.skyscraper_3;
+
+                case 3:
+                    return LegoObjects.skyscraper_4;
+
+                case 4:
+                    return LegoObjects.eiffel_tower;
 
                 default:
                     return LegoObjects.space;

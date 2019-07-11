@@ -39,7 +39,11 @@ public static class LegoObjects
                            building_severalFloors3_4,
                            building_severalFloors3_5,
 
-                           skyscraper;
+                           skyscraper_1,
+                           skyscraper_2,
+                           skyscraper_3,
+                           skyscraper_4,
+                           eiffel_tower;
 
   //Middle
   //public static GameObject middle_building_1;
@@ -96,7 +100,11 @@ public static class LegoObjects
     building_severalFloors3_4 = (GameObject)Resources.Load("Modern/Building/FloorsType3_4");
     building_severalFloors3_5 = (GameObject)Resources.Load("Modern/Building/FloorsType3_5");
 
-    skyscraper = (GameObject)Resources.Load("Modern/Building/skyscraper");
+    skyscraper_1 = (GameObject)Resources.Load("Modern/Building/skyscraper_1");
+    skyscraper_2 = (GameObject)Resources.Load("Modern/Building/skyscraper_2");
+    skyscraper_3 = (GameObject)Resources.Load("Modern/Building/skyscraper_3");
+    skyscraper_4 = (GameObject)Resources.Load("Modern/Building/skyscraper_4");
+    eiffel_tower = (GameObject)Resources.Load("Modern/Building/EiffelTower");
 
     //Middle
     //building_house = (GameObject)Resources.Load("Middle/Building/Building_1");
