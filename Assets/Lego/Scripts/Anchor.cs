@@ -55,6 +55,7 @@ public class Anchor : MonoBehaviour
 
   void OnTriggerEnter(Collider collider)
   {
+    if(collider.gameObject.tag == "Player" || collider.gameObject.tag == "Anchor") return;
     if (isLaunched)
     {
       /*

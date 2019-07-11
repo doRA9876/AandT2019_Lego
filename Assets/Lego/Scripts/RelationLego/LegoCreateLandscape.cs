@@ -995,7 +995,7 @@ public class LegoCreateLandscape : MonoBehaviour
 
   void SetStartPlayerPosition()//プレイヤーの初期位置を決める
   {
-    ViewSpot spotScript = gameObject.GetComponent<ViewSpot>();
+    ViewSpot spotScript = GameObject.FindGameObjectWithTag("Player").GetComponent<ViewSpot>();
     spotScript.Init();
     MovePosition();
 
