@@ -764,7 +764,7 @@ public class LegoCreateLandscape : MonoBehaviour
 
   void SetTunnelDetails(int x, int y)
   {
-        if (x == 0 || y == 0 || x == 15 || y == 15)
+        if ((x == 0 || y == 0 || x == 15 || y == 15) && landscapeLegoMap_[x, y].detail != LandscapeType_Details.Space)
             landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Tunnel;
   }
 
