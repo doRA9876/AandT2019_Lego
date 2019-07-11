@@ -43,6 +43,7 @@ public static class LegoObjects
                            skyscraper_2,
                            skyscraper_3,
                            skyscraper_4,
+                           skyscraper_5,
                            eiffel_tower;
 
   //Middle
@@ -55,7 +56,7 @@ public static class LegoObjects
   public static GameObject river_straight, river_curve, river_intersection_T, river_intersection_X, pond, sea;
 
   //Nature
-  public static GameObject forest_1;
+  public static GameObject forest_1, park_1;
 
   //Space
   public static GameObject space;
@@ -75,7 +76,6 @@ public static class LegoObjects
     bridge = (GameObject)Resources.Load("Modern/Road/Bridge");
 
     //Building
-    //RandomLoadBuildings();
     building_house1 = (GameObject)Resources.Load("Modern/Building/House_1");
     building_house2 = (GameObject)Resources.Load("Modern/Building/House_2");
     building_house3 = (GameObject)Resources.Load("Modern/Building/House_3");
@@ -104,6 +104,7 @@ public static class LegoObjects
     skyscraper_2 = (GameObject)Resources.Load("Modern/Building/skyscraper_2");
     skyscraper_3 = (GameObject)Resources.Load("Modern/Building/skyscraper_3");
     skyscraper_4 = (GameObject)Resources.Load("Modern/Building/skyscraper_4");
+    skyscraper_5 = (GameObject)Resources.Load("Modern/Building/skyscraper_5");
     eiffel_tower = (GameObject)Resources.Load("Modern/Building/EiffelTower");
 
     //Middle
@@ -119,41 +120,12 @@ public static class LegoObjects
     pond = (GameObject)Resources.Load("Water/Pond");
 
     //Nature
-    forest_1 = (GameObject)Resources.Load("Nature/Forest_1");
+    forest_1 = (GameObject)Resources.Load("Nature/Forest_3");
+    park_1 = (GameObject)Resources.Load("Nature/Park");
 
     //Space
     space = (GameObject)Resources.Load("Space/Space");
 
     isLoaded = true;
-
-    /*void RandomLoadBuildings()
-    {
-        switch (random)
-        {
-            case 0:
-                building_house = (GameObject)Resources.Load("Modern/Building/House_1");
-                break;
-
-            case 1:
-                building_house = (GameObject)Resources.Load("Modern/Building/House_2");
-                break;
-
-            case 2:
-                building_house = (GameObject)Resources.Load("Modern/Building/House_3");
-                break;
-
-            case 3:
-                building_house = (GameObject)Resources.Load("Modern/Building/House_4");
-                break;
-
-            case 4:
-                building_house = (GameObject)Resources.Load("Modern/Building/House_5");
-                break;
-
-            default:
-                building_house = (GameObject)Resources.Load("Space/Space");
-                break;
-        }
-    }*/
   }
 }
