@@ -120,7 +120,7 @@ public static class LegoObjects
     pond = (GameObject)Resources.Load("Water/Pond");
 
     //Nature
-    forest_1 = (GameObject)Resources.Load("Nature/Forest_1");
+    forest_1 = (GameObject)Resources.Load("Nature/Forest_3");
     park_1 = (GameObject)Resources.Load("Nature/Park");
 
     //Space
