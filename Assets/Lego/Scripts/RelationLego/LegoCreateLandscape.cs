@@ -835,25 +835,54 @@ public class LegoCreateLandscape : MonoBehaviour
         CreateRoad_StopAfter(x + 1, y);
       }
       else
-        SetBuildingFrontRoad(DirectionCount, x, y);
+        SetBuildingNearRoad(DirectionCount, x, y);
     }
 
-    void SetBuildingFrontRoad(int[] d, int x, int y)
-    {
-       if (d[0] == 1 && (landscapeLegoMap_[x, y + 1].overView == LandscapeType_OverView.Building || landscapeLegoMap_[x, y + 1].detail == LandscapeType_Details.Park) 
-           && landscapeLegoMap_[x, y + 1].direction == Direction.North)
-         landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
-       else if (d[1] == 1 && (landscapeLegoMap_[x, y - 1].overView == LandscapeType_OverView.Building || landscapeLegoMap_[x, y - 1].detail == LandscapeType_Details.Park) 
-                && landscapeLegoMap_[x, y - 1].direction == Direction.South)
-         landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
-       else if (d[2] == 1 && (landscapeLegoMap_[x - 1, y].overView == LandscapeType_OverView.Building || landscapeLegoMap_[x + 1, y].detail == LandscapeType_Details.Park) 
-                && landscapeLegoMap_[x - 1, y].direction == Direction.East)
-         landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
-       else if (d[3] == 1 && (landscapeLegoMap_[x + 1, y].overView == LandscapeType_OverView.Building || landscapeLegoMap_[x - 1, y].detail == LandscapeType_Details.Park) 
-                && landscapeLegoMap_[x + 1, y].direction == Direction.West)
-         landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
-       else
-         landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Underpass;
+    void SetBuildingNearRoad(int[] d, int x, int y)//Road_Stop周りにBuilding or ParkがあったらRoad_Stop、なかったらRoad_Underpass
+        {
+        int[] BuildingCount = new int[4] { 0, 0, 0, 0 };
+        int[] ParkCount = new int[4] { 0, 0, 0, 0 };
+
+        if (landscapeLegoMap_[x, y + 1].overView == LandscapeType_OverView.Building)
+            BuildingCount[0]++;
+        else if (landscapeLegoMap_[x, y - 1].overView == LandscapeType_OverView.Building)
+            BuildingCount[1]++;
+        else if (landscapeLegoMap_[x - 1, y].overView == LandscapeType_OverView.Building)
+            BuildingCount[2]++;
+        else if (landscapeLegoMap_[x + 1, y].overView == LandscapeType_OverView.Building)
+            BuildingCount[3]++;
+
+        if (landscapeLegoMap_[x, y + 1].detail == LandscapeType_Details.Park)
+            ParkCount[0]++;
+        else if (landscapeLegoMap_[x, y - 1].detail == LandscapeType_Details.Park)
+            ParkCount[1]++;
+        else if (landscapeLegoMap_[x - 1, y].detail == LandscapeType_Details.Park)
+            ParkCount[2]++;
+        else if (landscapeLegoMap_[x + 1, y].detail == LandscapeType_Details.Park)
+            ParkCount[3]++;
+
+            if (d[0] == 1 && (landscapeLegoMap_[x, y + 1].overView == LandscapeType_OverView.Building || landscapeLegoMap_[x, y + 1].detail == LandscapeType_Details.Park)
+                && landscapeLegoMap_[x, y + 1].direction == Direction.North)
+                landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
+            else if (d[1] == 1 && (landscapeLegoMap_[x, y - 1].overView == LandscapeType_OverView.Building || landscapeLegoMap_[x, y - 1].detail == LandscapeType_Details.Park)
+                     && landscapeLegoMap_[x, y - 1].direction == Direction.South)
+                landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
+            else if (d[2] == 1 && (landscapeLegoMap_[x - 1, y].overView == LandscapeType_OverView.Building || landscapeLegoMap_[x - 1, y].detail == LandscapeType_Details.Park)
+                     && landscapeLegoMap_[x - 1, y].direction == Direction.East)
+                landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
+            else if (d[3] == 1 && (landscapeLegoMap_[x + 1, y].overView == LandscapeType_OverView.Building || landscapeLegoMap_[x + 1, y].detail == LandscapeType_Details.Park)
+                     && landscapeLegoMap_[x + 1, y].direction == Direction.West)
+                landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
+            else if ((BuildingCount[0] == 1 || ParkCount[0] == 1) && landscapeLegoMap_[x, y + 1].direction == Direction.North)
+                landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
+            else if ((BuildingCount[1] == 1 || ParkCount[1] == 1) && landscapeLegoMap_[x, y - 1].direction == Direction.South)
+                landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
+            else if ((BuildingCount[0] == 1 || ParkCount[0] == 1) && landscapeLegoMap_[x - 1, y].direction == Direction.East)
+                landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
+            else if ((BuildingCount[1] == 1 || ParkCount[1] == 1) && landscapeLegoMap_[x + 1, y].direction == Direction.West)
+                landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Stop;
+            else
+                landscapeLegoMap_[x, y].detail = LandscapeType_Details.Road_Underpass;
     }
   }
 
