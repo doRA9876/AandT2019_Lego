@@ -11,7 +11,7 @@ public class TitleAnimation : MonoBehaviour
   GameObject parent;
   private float elapsedTime;
   private int step;
-  private readonly float dropSpeed = 6f;
+  private readonly float dropSpeed = 30f;
   private AudioSource sound01, sound02;
 
   // Start is called before the first frame update
@@ -89,17 +89,24 @@ public class TitleAnimation : MonoBehaviour
         break;
 
       case 4:
-        Color color = presenText.color;
-        presenText.color = new Color(color.r, color.g, color.b, color.a + 0.01f);
-        if (color.a > 0.95f)
+        StartCoroutine(LegoGeneric.DelayMethod(0.5f, () =>
         {
           sound01.PlayOneShot(sound01.clip);
+        }));
+        step++;
+        break;
+
+      case 5:
+        Color color = presenText.color;
+        presenText.color = new Color(color.r, color.g, color.b, color.a + 0.01f);
+        if (color.a > 0.99f)
+        {
           step++;
         }
         break;
 
-      case 5:
-        StartCoroutine(LegoGeneric.DelayMethod(4, () =>
+      case 6:
+        StartCoroutine(LegoGeneric.DelayMethod(1f, () =>
         {
           gameObject.SetActive(false);
           parent.GetComponent<LegoInit>().enabled = true;
