@@ -82,9 +82,33 @@ class LandscapeLegoInfo
         break;
 
       default:
+        obj = RandomSpaces();
         break;
     }
     return obj;
+
+    GameObject RandomSpaces()
+    {
+            int randomNum = Random.Range(0, 4);
+
+            switch (randomNum)
+            {
+                case 0:
+                    return LegoObjects.space_2;
+
+                case 1:
+                    return LegoObjects.space;
+
+                case 2:
+                    return LegoObjects.space;
+
+                case 3:
+                    return LegoObjects.space;
+
+                default:
+                    return LegoObjects.space;
+            }
+    }
 
     GameObject GetBuildingObject()
     {
@@ -106,7 +130,7 @@ class LandscapeLegoInfo
           return GetRandomSkyscrapers();
 
         default:
-          return LegoObjects.space;
+          return LegoObjects.space_2;
       }
     }
 
@@ -132,7 +156,7 @@ class LandscapeLegoInfo
                     return LegoObjects.building_house5;
 
                 default:
-                    return LegoObjects.space;
+                    return LegoObjects.space_2;
         }
     }
 
@@ -158,7 +182,7 @@ class LandscapeLegoInfo
                     return LegoObjects.building_severalFloors1_5;
 
                 default:
-                    return LegoObjects.space;
+                    return LegoObjects.space_2;
             }
     }
 
@@ -184,7 +208,7 @@ class LandscapeLegoInfo
                     return LegoObjects.building_severalFloors2_5;
 
                 default:
-                    return LegoObjects.space;
+                    return LegoObjects.space_2;
             }
     }
 
@@ -210,14 +234,13 @@ class LandscapeLegoInfo
                     return LegoObjects.building_severalFloors3_5;
 
                 default:
-                    return LegoObjects.space;
+                    return LegoObjects.space_2;
             }
     }
 
     GameObject GetRandomSkyscrapers()
     {
             int randomNum = Random.Range(0, 6);
-            //static bool[] setedBuild = new bool[6] { true, true, true, true, true, true };
 
             if (randomNum == 0 && setedBuild[0] == true)
             {
@@ -350,7 +373,7 @@ class LandscapeLegoInfo
       switch (this.detail)
       {
         case LandscapeType_Details.Forest:
-          return LegoObjects.forest_1;
+          return GetRandomForests();
 
         case LandscapeType_Details.Park:
           return GetRandomParks();//LegoObjects.park_1;
@@ -359,6 +382,26 @@ class LandscapeLegoInfo
           return LegoObjects.space;
       }
     }
+
+    GameObject GetRandomForests()
+    {
+            int randomNum = Random.Range(0, 3);
+
+            switch (randomNum)
+            {
+                case 0:
+                    return LegoObjects.forest_1;
+
+                case 1:
+                    return LegoObjects.forest_2;
+
+                case 2:
+                    return LegoObjects.forest_3;
+
+                default:
+                    return LegoObjects.space;
+            }
+        }
 
     GameObject GetRandomParks()
     {
@@ -899,7 +942,7 @@ public class LegoCreateLandscape : MonoBehaviour
         if (obj == null)
         {
           Debug.LogError(landscapeLegoMap_[x, y].detail + " is not exist.");
-          obj = LegoObjects.space;
+          obj = LegoObjects.space_2;
         }
         float rotationAngle;
         switch (landscapeLegoMap_[x, y].direction)

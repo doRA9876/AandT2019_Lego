@@ -2458,7 +2458,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!20 &1634645762
 Camera:
   m_ObjectHideFlags: 0
@@ -2574,7 +2574,7 @@ MonoBehaviour:
   UseSaveData: 1
   isDebugMode: 0
   isPlayable: 1
-  SaveDataName: savedata20190707030554
+  SaveDataName: savedata07_11_07_31
 --- !u!4 &1646880230
 Transform:
   m_ObjectHideFlags: 0
