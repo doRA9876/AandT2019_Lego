@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3443476545017959667}
   - component: {fileID: 4077150587672284424}
   - component: {fileID: 1414644709550294846}
+  - component: {fileID: 1910739428267833217}
   m_Layer: 0
   m_Name: EiffelTower
   m_TagString: Building
@@ -79,6 +80,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1910739428267833217
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8841066788108717069}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 0, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9076093408852649034
 GameObject:
   m_ObjectHideFlags: 0
