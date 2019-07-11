@@ -81,6 +81,7 @@ public class ViewSpot : MonoBehaviour
 
   void UpdateArrow()
   {
+    /*
     if (nextN == EXCEPT_POS) arrowN.SetActive(false);
     else arrowN.SetActive(true);
 
@@ -92,6 +93,7 @@ public class ViewSpot : MonoBehaviour
 
     if(nextW == EXCEPT_POS) arrowW.SetActive(false);
     else arrowW.SetActive(true);
+    */
   }
 
   public void TouchedArrow(string arrowName)

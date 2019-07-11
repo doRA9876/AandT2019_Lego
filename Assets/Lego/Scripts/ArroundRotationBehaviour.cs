@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class HelicopterBehaviour : MonoBehaviour
+public class ArroundRotationBehaviour : MonoBehaviour
 {
   private Vector3 cameraCenterPoint = new Vector3(LegoData.LANDSCAPE_MAP_WIDTH * LegoData.LANDSCAPE_OBJECT_WIDTH / 2, 0f, LegoData.LANDSCAPE_MAP_HEIGHT * LegoData.LANDSCAPE_OBJECT_HEIGHT / 2);
   private float radious = 100f;
