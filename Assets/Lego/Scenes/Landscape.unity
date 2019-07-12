@@ -515,47 +515,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 285869035}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 100, y: 409, z: 100}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 100, y: 400, z: 100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!21 &449872954
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Sprites/Default
-  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - PixelSnap: 0
-    - _EnableExternalAlpha: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &545832007
 GameObject:
   m_ObjectHideFlags: 0
@@ -917,11 +883,11 @@ PrefabInstance:
     - target: {fileID: 2348914, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 449872954}
+      objectReference: {fileID: 2134694452}
     - target: {fileID: 3380982, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1595075215}
+      objectReference: {fileID: 1569577611}
     - target: {fileID: 192944, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -946,11 +912,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 458974, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 402434, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4000013889601590, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_RootOrder
@@ -1046,7 +1012,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b2e40199828a1fe4eb26a1660b4bab1d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f3a0daadb50c5b94c844166af2485a81, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1223,7 +1189,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 712cd3a70a5a1da41a6594aac6a97abe, type: 2}
+  - {fileID: 2100000, guid: a77d7b8e315042740b21a351808a1b7e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1250,7 +1216,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1266458052}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 73a0e664fc57d714f97bf57fbe1d9289, type: 3}
 --- !u!4 &1266458056
 Transform:
   m_ObjectHideFlags: 0
@@ -1260,7 +1226,7 @@ Transform:
   m_GameObject: {fileID: 1266458052}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.25, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.01, z: 0.5}
+  m_LocalScale: {x: 0.08, y: 0.01, z: 0.08}
   m_Children: []
   m_Father: {fileID: 1460739074}
   m_RootOrder: 0
@@ -1485,7 +1451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1460739073}
-  arrows: {fileID: 0}
+  arrows: {fileID: 1734685211}
 --- !u!136 &1460739079
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1500,7 +1466,7 @@ CapsuleCollider:
   m_Height: 1.9055958
   m_Direction: 1
   m_Center: {x: 0, y: 0.4527979, z: 0}
---- !u!43 &1595075215
+--- !u!43 &1569577611
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1713,7 +1679,7 @@ MonoBehaviour:
   UseSaveData: 1
   isDebugMode: 0
   isPlayable: 1
-  SaveDataName: savedata07_11_07_31
+  SaveDataName: savedata07_12_03_47
   instanceHeight: 100
 --- !u!4 &1646880230
 Transform:
@@ -1739,7 +1705,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 33ae2fe6a818b06419be5c6685429e7e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e0d33868f9ece17478119d827787a1e3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1992,7 +1958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2470ff24dba5474a9fde8d4f47c0db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1266458052}
+  player: {fileID: 1460739073}
   arrows: {fileID: 1734685211}
 --- !u!1 &1902660824 stripped
 GameObject:
@@ -2090,6 +2056,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Anchor
       objectReference: {fileID: 0}
+    - target: {fileID: 699869230192437594, guid: 81b8a968afab50a4798be3d63f8cff74,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1460739073}
     - target: {fileID: 699869230192437597, guid: 81b8a968afab50a4798be3d63f8cff74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2145,11 +2116,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 699869230192437594, guid: 81b8a968afab50a4798be3d63f8cff74,
+    - target: {fileID: 6632301976037439716, guid: 81b8a968afab50a4798be3d63f8cff74,
         type: 3}
-      propertyPath: player
+      propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 1460739073}
+      objectReference: {fileID: 8300000, guid: d1d01e7eb2045794384a03f539311609, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81b8a968afab50a4798be3d63f8cff74, type: 3}
 --- !u!114 &1953018141 stripped
@@ -2240,6 +2211,40 @@ MonoBehaviour:
   counterVelocityResetTime: 0
   counterVelocityStrength: 1
   counterVelocityPerAxis: {x: 1, y: 1, z: 1}
+--- !u!21 &2134694452
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &699869229066801126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2256,6 +2261,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Anchor
       objectReference: {fileID: 0}
+    - target: {fileID: 699869230192437594, guid: 81b8a968afab50a4798be3d63f8cff74,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1460739073}
     - target: {fileID: 699869230192437597, guid: 81b8a968afab50a4798be3d63f8cff74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2311,11 +2321,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 699869230192437594, guid: 81b8a968afab50a4798be3d63f8cff74,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1460739073}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81b8a968afab50a4798be3d63f8cff74, type: 3}
 --- !u!1001 &8091134453873458690

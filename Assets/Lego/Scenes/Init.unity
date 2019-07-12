@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 1535622140}
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -154,8 +154,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 854.9998}
-  m_SizeDelta: {x: 800, y: 180}
+  m_AnchoredPosition: {x: 10.2, y: 871.5}
+  m_SizeDelta: {x: 820.4, y: 233}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &233221882
 MonoBehaviour:
@@ -177,7 +177,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: aa2a3a2989c8cc9468a67aefad0af40a, type: 3}
+  m_Texture: {fileID: 2800000, guid: 1ee7f252d251fa847b3fd6b7a52f99f8, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -391,8 +391,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 654.9998}
-  m_SizeDelta: {x: 1400, y: 200}
+  m_AnchoredPosition: {x: -5.5, y: 681.5}
+  m_SizeDelta: {x: 1388.9, y: 253.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &731939256
 MonoBehaviour:
@@ -414,7 +414,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: bcb021c3f171b7f43b86de178ba135bd, type: 3}
+  m_Texture: {fileID: 2800000, guid: 0e7b149cb9aef044aaafc18ba3a31f5d, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -713,8 +713,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1055}
-  m_SizeDelta: {x: 1200, y: 200}
+  m_AnchoredPosition: {x: 4.6, y: 1067.4}
+  m_SizeDelta: {x: 1209.2, y: 244.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &942200803
 MonoBehaviour:
@@ -736,7 +736,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 3146fa37444fbc147917850578aa3344, type: 3}
+  m_Texture: {fileID: 2800000, guid: fe0801e34d1f48745beb350350f6e3bd, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1100,7 +1100,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 33ae2fe6a818b06419be5c6685429e7e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e0d33868f9ece17478119d827787a1e3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1196,7 +1196,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2171e92b0df1ae046b6ccc360d35ded7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: acee6da7d513fa3489e2cfa309076f0d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1316,8 +1316,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 364.8}
-  m_SizeDelta: {x: 1361.5, y: 159}
+  m_AnchoredPosition: {x: 11, y: 333}
+  m_SizeDelta: {x: 1383.5, y: 222.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1420752874
 MonoBehaviour:
@@ -1339,7 +1339,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 0f40380f83c372e479e30898d5849900, type: 3}
+  m_Texture: {fileID: 2800000, guid: cc037a802a820d04e84137b7bc12686c, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1517,13 +1517,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1535622139}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 100, y: 100, z: 100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1955394247
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,7 +1736,7 @@ MonoBehaviour:
   UseSaveData: 1
   isDebugMode: 0
   isPlayable: 0
-  SaveDataName: savedata07_11_07_31
+  SaveDataName: savedata07_12_03_47
   instanceHeight: 0
 --- !u!4 &2011548887
 Transform:
@@ -1873,8 +1873,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c61782d530448f4597a558ad213e601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraCenterPoint: {x: 80, y: 0, z: 80}
-  radious: 100
 --- !u!114 &2011548891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1944,7 +1942,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: fb862de0b29f84549932bfa27790606f, type: 3}
+  m_Texture: {fileID: 2800000, guid: 5057d1a665d654840ac6a04219e0a1bb, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0

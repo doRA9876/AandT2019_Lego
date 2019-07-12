@@ -60,7 +60,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117aa2b8426d5a6498f9be49e5f0dfc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   isCollided: 0
   isCollisionPlayer: 0
 --- !u!82 &6632301976037439716
@@ -73,7 +72,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9aab43588583d4c41b39ff928dda72c0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d1d01e7eb2045794384a03f539311609, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.3
   m_Pitch: 1
@@ -169,7 +168,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1411676a11b36b340be28aab5cd87456, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6b7380a980ac5c9478263cda1e425d18, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.3
   m_Pitch: 1
