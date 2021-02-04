@@ -1,4 +1,4 @@
-# AandT2019_Lego
+# Stack Art B-Lock
 
 ## Abstract  
 アート&テクノロジー2019提出作品  
